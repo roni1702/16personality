@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>আপনার ব্যক্তিত্ব যাচাই করুন | পার্সোনালিটি টেস্ট</title>
+
+  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS CDN (Warning Suppressed for GitHub Pages) -->
+  <script>
+    const _origWarn = console.warn;
+    console.warn = function(...args) {
+      if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) return;
+      _origWarn.apply(console, args);
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Hind Siliguri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- html2canvas for Image/Photo Export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 0.25s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Clean PDF / Print Stylesheet */
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+        padding: 0 !important;
+      }
+      #welcome-screen, #quiz-screen, #action-footer, #download-dropdown, .no-print {
+        display: none !important;
+      }
+      #result-screen {
+        display: block !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+      .tab-content {
+        display: block !important;
+        margin-bottom: 2rem !important;
+      }
+      .tab-content.hidden {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800 antialiased px-3 py-8 sm:px-6 sm:py-14 flex justify-center items-start">
+
+  <div class="w-full max-w-3xl bg-white shadow-xl shadow-slate-200/60 rounded-3xl border border-slate-100 overflow-hidden my-4">
+
+    <!-- ========================================== -->
+    <!-- ১. হোম স্ক্রিন (Welcome Screen)             -->
+    <!-- ========================================== -->
+    <section id="welcome-screen" class="p-6 sm:p-12 fade-in">
+      <!-- Top Banner Image -->
+      <div class="w-full max-w-md mx-auto mb-8 overflow-hidden rounded-2xl shadow-md border border-slate-100">
+        <img src="16par.png" alt="16 Personalities Banner" class="w-full h-auto object-cover block" />
+      </div>
+
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-snug tracking-tight mb-4">
+          আপনার ভেতরের সত্তাকে আবিষ্কার করুন
+        </h1>
+        <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+          আমরা কীভাবে চিন্তা করি, সিদ্ধান্ত নিই কিংবা মানুষের সাথে মেলামেশা করি—তার মূল চাবিকাঠি লুকিয়ে আছে আমাদের ব্যক্তিত্বের মধ্যে।
+        </p>
+      </div>
+
+      <!-- কেন প্রয়োজন কার্ড -->
+      <div class="bg-slate-50/70 rounded-2xl p-6 sm:p-8 border border-slate-200/80 mb-8">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3 flex items-center gap-2.5">
+          <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M12 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>নিজের ব্যক্তিত্ব সম্পর্কে জানা কেন প্রয়োজন?</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+          নিজের ব্যক্তিত্বকে সঠিকভাবে অনুধাবন করা জীবনের প্রতিটি ক্ষেত্রে ইতিবাচক পরিবর্তন আনে:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white p-4.5 rounded-xl border border-slate-200/70 shadow-sm flex items-start gap-3.5">
+            <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm sm:text-base">স্ব-সচেতনতা ও আত্মবিশ্বাস</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">নিজের মানসিক শক্তি, দুর্বলতা ও আচরণের কারণগুলো স্পষ্ট বুঝতে পারা যায়, যা আত্মবিশ্বাস বাড়ায়।</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-4.5 rounded-xl border border-slate-200/70 shadow-sm flex items-start gap-3.5">
+            <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm sm:text-base">পেশা ও কাজের সঠিক নির্বাচন</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">আপনার চিন্তাভাবনা ও শক্তির সাথে কোন ধরনের ক্যারিয়ার বা কাজের পরিবেশ মিলবে, তা জানা সহজ হয়।</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-4.5 rounded-xl border border-slate-200/70 shadow-sm flex items-start gap-3.5">
+            <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm sm:text-base">সম্পর্কের উন্নতি</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">পরিবার, বন্ধু ও সহকর্মীদের দৃষ্টিভঙ্গি সহজে বোঝা যায়, ফলে ভুল বোঝাবুঝি কমে ও সৌহার্দ্য তৈরি হয়।</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-4.5 rounded-xl border border-slate-200/70 shadow-sm flex items-start gap-3.5">
+            <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm sm:text-base">মানসিক চাপ নিয়ন্ত্রণ</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">নিজের মানসিক চাপের কারণগুলো আগে থেকে চিহ্নিত করে প্রতিকূল পরিস্থিতিতে নিজেকে শান্ত রাখা যায়।</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- টেস্ট কীভাবে কাজ করে ও ৪টি নিয়ম -->
+      <div class="bg-indigo-50/40 rounded-2xl p-6 sm:p-8 border border-indigo-100 mb-10">
+        <h2 class="text-xl sm:text-2xl font-bold text-indigo-950 mb-2 flex items-center gap-2.5">
+          <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <span>এই টেস্টটি কীভাবে কাজ করে?</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+          এই টেস্টটি আধুনিক মনস্তাত্ত্বিক মডেল (MBTI ও Big Five Personality)-এর কাঠামোর ওপর ভিত্তি করে তৈরি, যা আপনার চিন্তাধারা ও আচরণের ধরণ বিশ্লেষণ করে।
+        </p>
+
+        <h4 class="font-bold text-indigo-900 text-sm sm:text-base mb-3">সঠিক ও নির্ভুল ফলাফল পাওয়ার সহজ উপায়:</h4>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3.5 text-sm sm:text-base text-slate-700 bg-white p-3.5 rounded-xl border border-indigo-50/80 shadow-xs">
+            <div class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">১</div>
+            <span><strong>বাস্তব পরিস্থিতিভিত্তিক প্রশ্ন:</strong> বিকল্পগুলো থেকে আপনার বাস্তব জীবনের সাথে যেটি সবচেয়ে বেশি মেলে তা বেছে নিন।</span>
+          </div>
+
+          <div class="flex items-start gap-3.5 text-sm sm:text-base text-slate-700 bg-white p-3.5 rounded-xl border border-indigo-50/80 shadow-xs">
+            <div class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">২</div>
+            <span><strong>সম্পূর্ণ সততা বজায় রাখুন:</strong> আপনি বাস্তবে যা করেন সেটাই নির্বাচন করুন—আপনি যেমন হতে চান তা নয়।</span>
+          </div>
+
+          <div class="flex items-start gap-3.5 text-sm sm:text-base text-slate-700 bg-white p-3.5 rounded-xl border border-indigo-50/80 shadow-xs">
+            <div class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">৩</div>
+            <span><strong>প্রথম অনুভূতিকে প্রাধান্য দিন:</strong> প্রশ্নটি পড়ার পর মনের ভেতর প্রথম যে উত্তরটি ভেসে ওঠে, সেটি দিন।</span>
+          </div>
+
+          <div class="flex items-start gap-3.5 text-sm sm:text-base text-slate-700 bg-white p-3.5 rounded-xl border border-indigo-50/80 shadow-xs">
+            <div class="w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">৪</div>
+            <span><strong>কোনো উত্তরই ভুল নয়:</strong> এটি কোনো মেধা পরীক্ষা নয়, কোনো উত্তরই ভুল নয়; এটি কেবল আপনার নিজস্ব স্বভাব।</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Start Button -->
+      <div class="text-center">
+        <button onclick="startQuiz()" class="w-full sm:w-auto px-10 py-4 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold rounded-2xl shadow-lg shadow-indigo-200 transition-all text-lg inline-flex items-center justify-center gap-3">
+          <span>চলুন শুরু করি</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ২. টেস্ট স্ক্রিন (Quiz - 5 Per Page)        -->
+    <!-- ========================================== -->
+    <section id="quiz-screen" class="p-5 sm:p-10 hidden">
+      <!-- Sticky Progress Header -->
+      <div class="sticky top-0 bg-white/95 backdrop-blur-md pt-2 pb-4 mb-8 border-b border-slate-100 z-10">
+        <div class="flex justify-between items-center text-sm font-bold text-slate-600 mb-2">
+          <span id="page-indicator">পৃষ্ঠা ১ / ১২</span>
+          <span id="answered-indicator" class="text-xs bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full font-semibold border border-indigo-100">০% সম্পন্ন</span>
+        </div>
+        <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+          <div id="progress-bar" class="h-full bg-indigo-600 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- 5 Questions Container -->
+      <div id="questions-container" class="space-y-8 fade-in">
+        <!-- Dynamically rendered via JavaScript -->
+      </div>
+
+      <!-- Navigation Footer -->
+      <div class="flex items-center justify-between gap-4 mt-10 pt-6 border-t border-slate-100">
+        <button id="prev-btn" onclick="previousPage()" class="px-6 py-3 border border-slate-300 hover:bg-slate-50 active:scale-95 text-slate-700 font-semibold rounded-xl transition-all disabled:opacity-30 disabled:pointer-events-none flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          <span>আগের পৃষ্ঠা</span>
+        </button>
+
+        <button id="next-btn" onclick="nextPage()" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-semibold rounded-xl shadow-md shadow-indigo-200 transition-all flex items-center gap-2">
+          <span id="next-btn-text">পরের পৃষ্ঠা</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ৩. ফলাফল স্ক্রিন (Result Screen)            -->
+    <!-- ========================================== -->
+    <section id="result-screen" class="hidden p-6 sm:p-12 fade-in">
+      
+      <!-- Capture Canvas / Printable Container -->
+      <div id="result-capture-area" class="bg-white p-2 sm:p-4 rounded-2xl">
+        
+        <!-- বিভাগ ১: ব্যক্তিত্বের সংক্ষিপ্ত বিবরণ ও শিরোনাম -->
+        <div class="text-center pb-8 border-b border-slate-100">
+          <span class="inline-block text-xs font-bold tracking-wider uppercase bg-emerald-50 text-emerald-700 border border-emerald-200 px-3.5 py-1 rounded-full mb-3">
+            আপনার মূল ব্যক্তিত্বের ফলাফল
+          </span>
+          <h2 id="result-type" class="text-4xl sm:text-5xl font-black text-indigo-600 tracking-tight mb-2">
+            INFJ
+          </h2>
+          <h3 id="result-title" class="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
+            দূরদর্শী পরামর্শদাতা (The Advocate)
+          </h3>
+          <div id="result-desc" class="max-w-2xl mx-auto text-slate-600 text-sm sm:text-base leading-relaxed space-y-3 text-left bg-slate-50/70 p-5 rounded-2xl border border-slate-200/60">
+            <!-- 2-3 paragraphs of intro loaded via JS -->
+          </div>
+        </div>
+
+        <!-- বিভাগ ২: বৈশিষ্ট্য ভাঙ্গন অগ্রগতি বার (শতাংশ বার) -->
+        <div class="py-8 border-b border-slate-100">
+          <h3 class="text-lg font-bold text-slate-900 mb-5 flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+            <span>ব্যক্তিত্বের বৈশিষ্ট্যের শতকরা হার</span>
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- মন (Mind) -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/70">
+              <div class="flex justify-between text-xs sm:text-sm font-bold mb-2">
+                <span id="mind-left-label" class="text-indigo-700">অন্তর্মুখী</span>
+                <span id="mind-right-label" class="text-slate-500">বহির্মুখী</span>
+              </div>
+              <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden flex">
+                <div id="bar-mind-left" class="h-full bg-indigo-600 transition-all duration-500" style="width: 50%;"></div>
+                <div id="bar-mind-right" class="h-full bg-slate-300 transition-all duration-500" style="width: 50%;"></div>
+              </div>
+              <div class="flex justify-between text-xs text-slate-500 mt-1 font-semibold">
+                <span id="mind-left-val">৫০%</span>
+                <span id="mind-right-val">৫০%</span>
+              </div>
+            </div>
+
+            <!-- শক্তি (Energy) -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/70">
+              <div class="flex justify-between text-xs sm:text-sm font-bold mb-2">
+                <span id="energy-left-label" class="text-indigo-700">স্বজ্ঞাত / দূরদর্শী</span>
+                <span id="energy-right-label" class="text-slate-500">বাস্তবধর্মী</span>
+              </div>
+              <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden flex">
+                <div id="bar-energy-left" class="h-full bg-amber-500 transition-all duration-500" style="width: 50%;"></div>
+                <div id="bar-energy-right" class="h-full bg-slate-300 transition-all duration-500" style="width: 50%;"></div>
+              </div>
+              <div class="flex justify-between text-xs text-slate-500 mt-1 font-semibold">
+                <span id="energy-left-val">৫০%</span>
+                <span id="energy-right-val">৫০%</span>
+              </div>
+            </div>
+
+            <!-- প্রকৃতি (Nature) -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/70">
+              <div class="flex justify-between text-xs sm:text-sm font-bold mb-2">
+                <span id="nature-left-label" class="text-indigo-700">যৌক্তিক বিচার</span>
+                <span id="nature-right-label" class="text-slate-500">অনুভূতিপ্রবণ</span>
+              </div>
+              <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden flex">
+                <div id="bar-nature-left" class="h-full bg-emerald-500 transition-all duration-500" style="width: 50%;"></div>
+                <div id="bar-nature-right" class="h-full bg-slate-300 transition-all duration-500" style="width: 50%;"></div>
+              </div>
+              <div class="flex justify-between text-xs text-slate-500 mt-1 font-semibold">
+                <span id="nature-left-val">৫০%</span>
+                <span id="nature-right-val">৫০%</span>
+              </div>
+            </div>
+
+            <!-- কৌশল (Tactics) -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/70">
+              <div class="flex justify-between text-xs sm:text-sm font-bold mb-2">
+                <span id="tactics-left-label" class="text-indigo-700">সুপরিকল্পিত</span>
+                <span id="tactics-right-label" class="text-slate-500">নমনীয়</span>
+              </div>
+              <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden flex">
+                <div id="bar-tactics-left" class="h-full bg-rose-500 transition-all duration-500" style="width: 50%;"></div>
+                <div id="bar-tactics-right" class="h-full bg-slate-300 transition-all duration-500" style="width: 50%;"></div>
+              </div>
+              <div class="flex justify-between text-xs text-slate-500 mt-1 font-semibold">
+                <span id="tactics-left-val">৫০%</span>
+                <span id="tactics-right-val">৫০%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- বিভাগ ৩: ট্যাবড / শ্রেণীবদ্ধ বিশদ বিশ্লেষণ -->
+        <div class="py-8 border-b border-slate-100">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+            <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+              <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+              <span>বিশদ চারিত্রিক বিশ্লেষণ</span>
+            </h3>
+            <span id="population-stat" class="text-xs font-bold px-3 py-1 bg-violet-50 text-violet-700 border border-violet-100 rounded-full">
+              বিশ্বে উপস্থিতি: আনুমানিক ১.৫%
+            </span>
+          </div>
+
+          <!-- Navigation Tabs -->
+          <div class="flex flex-wrap gap-2 mb-6 no-print border-b border-slate-200 pb-3">
+            <button onclick="switchTab('strengths')" id="tab-btn-strengths" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-indigo-600 text-white shadow-sm">
+              শক্তি ও দুর্বলতা
+            </button>
+            <button onclick="switchTab('relationships')" id="tab-btn-relationships" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+              সম্পর্ক ও বন্ধুত্ব
+            </button>
+            <button onclick="switchTab('marriage')" id="tab-btn-marriage" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+              দাম্পত্য জীবন
+            </button>
+            <button onclick="switchTab('career')" id="tab-btn-career" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+              উপযুক্ত পেশা
+            </button>
+            <button onclick="switchTab('growth')" id="tab-btn-growth" class="px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200">
+              আত্মউন্নয়ন
+            </button>
+          </div>
+
+          <!-- Tab 1: শক্তি ও দুর্বলতা -->
+          <div id="tab-strengths" class="tab-content fade-in space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-emerald-50/60 p-5 rounded-2xl border border-emerald-200/70">
+                <h4 class="font-bold text-emerald-950 mb-3 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span>প্রধান শক্তি ও সামর্থ্য</span>
+                </h4>
+                <ul id="strengths-list" class="space-y-2 text-sm text-emerald-900 leading-relaxed list-disc list-inside">
+                  <!-- Dynamic items -->
+                </ul>
+              </div>
+
+              <div class="bg-rose-50/60 p-5 rounded-2xl border border-rose-200/70">
+                <h4 class="font-bold text-rose-950 mb-3 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                  </svg>
+                  <span>দুর্বলতা ও সতর্কতার দিক</span>
+                </h4>
+                <ul id="weaknesses-list" class="space-y-2 text-sm text-rose-900 leading-relaxed list-disc list-inside">
+                  <!-- Dynamic items -->
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: সম্পর্ক ও বন্ধুত্ব -->
+          <div id="tab-relationships" class="tab-content fade-in hidden space-y-3">
+            <div class="bg-indigo-50/50 p-5 rounded-2xl border border-indigo-100">
+              <h4 class="font-bold text-indigo-950 mb-2 flex items-center gap-2">
+                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+                <span>ব্যক্তিগত সংযোগ ও বন্ধুত্বে তাদের আচরণ</span>
+              </h4>
+              <p id="relationships-desc" class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                <!-- Relationships text -->
+              </p>
+            </div>
+          </div>
+
+          <!-- Tab 3: দাম্পত্য জীবন -->
+          <div id="tab-marriage" class="tab-content fade-in hidden space-y-3">
+            <div class="bg-pink-50/60 p-5 rounded-2xl border border-pink-200/70">
+              <h4 class="font-bold text-pink-950 mb-2 flex items-center gap-2">
+                <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                </svg>
+                <span>দাম্পত্য জীবনে সেরা মেলবন্ধন ও কারণ</span>
+              </h4>
+              <div id="marriage-content" class="text-sm sm:text-base text-pink-950/90 leading-relaxed space-y-3">
+                <!-- Marriage advice -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: উপযুক্ত পেশা -->
+          <div id="tab-career" class="tab-content fade-in hidden space-y-3">
+            <div class="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/70">
+              <h4 class="font-bold text-amber-950 mb-2 flex items-center gap-2">
+                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span>আদর্শ কর্মপরিবেশ ও পেশার ক্ষেত্র</span>
+              </h4>
+              <p id="career-desc" class="text-sm sm:text-base text-amber-950/90 leading-relaxed mb-3">
+                <!-- Career text -->
+              </p>
+              <div id="career-roles" class="flex flex-wrap gap-2 mt-2">
+                <!-- Role badges -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 5: আত্মউন্নয়ন -->
+          <div id="tab-growth" class="tab-content fade-in hidden space-y-3">
+            <div class="bg-sky-50/60 p-5 rounded-2xl border border-sky-200/70">
+              <h4 class="font-bold text-sky-950 mb-2 flex items-center gap-2">
+                <svg class="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                </svg>
+                <span>ব্যক্তিগত বৃদ্ধির বাস্তবসম্মত পরামর্শ</span>
+              </h4>
+              <ul id="growth-tips" class="space-y-2 text-sm sm:text-base text-sky-950/90 leading-relaxed list-disc list-inside">
+                <!-- Growth tips -->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- বিভাগ ৪: বিখ্যাত ব্যক্তি ও কাল্পনিক চরিত্র -->
+        <div class="py-8">
+          <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <span>আপনার ব্যক্তিত্বের অনুরূপ বিখ্যাত ব্যক্তিত্ব ও চরিত্র</span>
+          </h3>
+          <div id="famous-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+      </div>
+      <!-- End of capture container -->
+
+      <!-- অ্যাকশন ও ডাউনলোড ফুটার -->
+      <div id="action-footer" class="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <!-- Retest Button -->
+        <button onclick="restartQuiz()" class="w-full sm:w-auto px-6 py-3 border border-slate-300 hover:border-slate-800 text-slate-700 hover:text-slate-900 font-bold rounded-2xl transition-all flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          <span>পুনরায় টেস্ট দিন</span>
+        </button>
+
+        <!-- Download Dropdown -->
+        <div class="relative w-full sm:w-auto">
+          <button onclick="toggleDownloadMenu()" class="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold rounded-2xl shadow-lg shadow-indigo-200 transition-all flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+            </svg>
+            <span>ফলাফল ডাউনলোড করুন</span>
+            <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+
+          <!-- Dropdown Options -->
+          <div id="download-dropdown" class="hidden absolute right-0 bottom-full mb-2 w-48 bg-white border border-slate-200 shadow-xl rounded-2xl p-2 z-20 fade-in">
+            <button onclick="downloadAsText()" class="w-full text-left px-4 py-2.5 rounded-xl hover:bg-indigo-50 text-sm font-semibold text-slate-700 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span>Text (.txt) ফাইল</span>
+            </button>
+            <button onclick="downloadAsPDF()" class="w-full text-left px-4 py-2.5 rounded-xl hover:bg-indigo-50 text-sm font-semibold text-slate-700 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-rose-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+              </svg>
+              <span>PDF ফরম্যাট</span>
+            </button>
+            <button onclick="downloadAsPhoto()" class="w-full text-left px-4 py-2.5 rounded-xl hover:bg-indigo-50 text-sm font-semibold text-slate-700 flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              <span>Photo (.png) ইমেজ</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- JavaScript শুরু -->
+  <script>
+    // ============================================================
+    // ৬০টি বাস্তব পরিস্থিতিভিত্তিক প্রশ্ন (স্পষ্ট দৃশ্যপট ও সহজ ভাষা)
+    // ============================================================
+    const questions = [
+      // 1-15: সামাজিক অবস্থান ও শক্তি (E vs I - বহির্মুখী বনাম অন্তর্মুখী)
+      {
+        id: 1,
+        dim: "EI",
+        scenario: "ছুটির দিনে আপনার মানসিক প্রশান্তি ও স্বস্তি পেতে কোনটি বেশি পছন্দ?",
+        optA: "বন্ধুবান্ধবের সাথে দেখা করা, আড্ডা দেওয়া বা বাইরে কোথাও ঘুরতে যাওয়া।",
+        optB: "নিজের ঘরে একা থাকা, পছন্দের বই পড়া, সিনেমা দেখা বা একান্তে নিজের সময় কাটানো।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 2,
+        dim: "EI",
+        scenario: "নতুন কোনো সামাজিক অনুষ্ঠানে বা অপরিচিত মানুষের জমায়েতে গেলে আপনার আচরণ কেমন হয়?",
+        optA: "সহজেই অপরিচিতদের সাথে কথা শুরু করতে পারি এবং নতুন পরিচিতি তৈরি করি।",
+        optB: "একটু গুটিয়ে থাকি এবং চেনা-পরিচিত কারও সঙ্গেই বেশি সময় কাটাতে পছন্দ করি।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 3,
+        dim: "EI",
+        scenario: "একটি দীর্ঘ ও ব্যস্ত সপ্তাহের পর আপনার মানসিক শক্তি কীভাবে দ্রুত ফিরে আসে?",
+        optA: "মানুষের সাথে আড্ডা দিয়ে এবং কোলাহলপূর্ণ পরিবেশে সময় কাটিয়ে।",
+        optB: "কোনো ধরনের কোলাহল ছাড়া সম্পূর্ণ শান্ত ও নীরব পরিবেশে একা বিশ্রাম নিয়ে।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 4,
+        dim: "EI",
+        scenario: "কোনো বিষয়ে নতুন আইডিয়া বা সমস্যা মাথায় এলে আপনি সাধারণত কী করেন?",
+        optA: "কারও সাথে তাৎক্ষণিক আলাপ-আলোচনা করে কথা বলতে বলতে বিষয়টি গুছিয়ে নিই।",
+        optB: "আগে নিজের মাথায় একান্তে বিষয়টি সম্পূর্ণ ভেবে নিই, তারপর কাউকে জানাই।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 5,
+        dim: "EI",
+        scenario: "ফোনে যোগাযোগ করার ক্ষেত্রে আপনার কাছে কোনটি বেশি সুবিধাজনক মনে হয়?",
+        optA: "সরাসরি ফোন কলে কথা বলে তাৎক্ষণিক বিষয়টি সেরে ফেলা।",
+        optB: "মেসেজ বা টেক্সট লিখে নিজের সুবিধাজনক সময়ে যোগাযোগ করা।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 6,
+        dim: "EI",
+        scenario: "বন্ধুমহলে আপনার পরিচিতি বা সামাজিক বৃত্ত কেমন?",
+        optA: "আমার পরিচিত মানুষের পরিধি বেশ বড় এবং সহজেই সবার সাথে মিশতে পারি।",
+        optB: "আমার খুব অল্প কয়েকজন ঘনিষ্ঠ বন্ধু রয়েছে এবং এতেই আমি সন্তুষ্ট।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 7,
+        dim: "EI",
+        scenario: "যেকোনো দলগত অনুষ্ঠান বা জমায়েতে আপনার অবস্থান সাধারণত কোথায় থাকে?",
+        optA: "সবার মনোযোগের কেন্দ্রে থাকা এবং আড্ডায় নেতৃত্ব দেওয়া উপভোগ করি।",
+        optB: "পেছনের সারিতে থেকে চুপচাপ পরিবেশ ও মানুষ পর্যবেক্ষণ করতে বেশি ভালোবাসি।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 8,
+        dim: "EI",
+        scenario: "কাজের পরিবেশে আপনার একাগ্রতা বজায় রাখার জন্য কোনটি বেশি প্রয়োজন?",
+        optA: "দলে সবার সাথে প্রাণবন্ত আলোচনা ও মতবিনিময় করতে করতে কাজ করা।",
+        optB: "সম্পূর্ণ একা এবং কোনো বিঘ্ন ছাড়া একটি নীরব ও নিরিবিলি জায়গা।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 9,
+        dim: "EI",
+        scenario: "নিজের ব্যক্তিগত অনুভূতি বা আবেগের বিষয়ে আপনি কতটা খোলামেলা?",
+        optA: "মনের অনুভূতিগুলো বিশ্বস্ত মানুষের কাছে সহজেই প্রকাশ করে মন হালকা করি।",
+        optB: "নিজের ভেতরের গভীর আবেগ সহজে কারও সামনে প্রকাশ করতে দ্বিধাবোধ করি।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 10,
+        dim: "EI",
+        scenario: "সারাদিন ঘরে একা একা কাটাতে হলে আপনার কেমন অনুভূতি হয়?",
+        optA: "কিছুক্ষণ পরই একঘেয়েমি বা অস্থিরতা চলে আসে, কারও সাথে কথা বলতে ইচ্ছে করে।",
+        optB: "একাকী সময় কাটানো দারুণ উপভোগ করি এবং নিজের পছন্দের কাজে ডুবে থাকি।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 11,
+        dim: "EI",
+        scenario: "কোনো গ্রুপ প্রজেক্ট বা মিটিংয়ে আপনার স্বভাব কেমন থাকে?",
+        optA: "স্বতঃস্ফূর্তভাবে সবার আগে মতামত প্রকাশ করি ও কথা বলি।",
+        optB: "আগে সবার কথা মনোযোগ দিয়ে শুনি, তারপর খুব প্রয়োজনীয় হলে কথা বলি।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 12,
+        dim: "EI",
+        scenario: "অপরিচিত কারও সাথে লিফটে বা গাড়িতে দেখা হলে আপনি কী করেন?",
+        optA: "স্বাভাবিকভাবেই ছোটখাটো কুশলবিনিময় বা কথা শুরু করে দিই।",
+        optB: "চুপচাপ নিজের ফোনে বা অন্যমনস্ক থাকি, যেচে কথা বলতে যাই না।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 13,
+        dim: "EI",
+        scenario: "আপনার চিন্তা ও মতামতের গতি কেমন হয়?",
+        optA: "ভাবার সাথে সাথেই তা মুখে প্রকাশ করে ফেলি।",
+        optB: "কথা বলার আগে প্রতিটা শব্দ মনে মনে গুছিয়ে নিই।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 14,
+        dim: "EI",
+        scenario: "দীর্ঘদিন কোনো মানুষের সংস্পর্শ ছাড়া একাকী কাজ করতে দিলে আপনার কেমন লাগবে?",
+        optA: "খুব দ্রুত প্রেরণা হারিয়ে ফেলব ও কাজ একঘেয়ে লাগবে।",
+        optB: "বিন্দুমাত্র সমস্যা হবে না, বরং নিজের সেরা কাজটি বের করতে পারব।",
+        typeA: "E", typeB: "I"
+      },
+      {
+        id: 15,
+        dim: "EI",
+        scenario: "আপনার চারপাশের মানুষ আপনাকে সাধারণত কীভাবে দেখে?",
+        optA: "চঞ্চল, খোলামেলা এবং খুব দ্রুত যেকোনো মানুষের সাথে মিশে যাওয়ার মতো।",
+        optB: "শান্ত, কিছুটা রহস্যময় এবং সহজে সবার সাথে ঘনিষ্ঠ না হওয়া মানুষ।",
+        typeA: "E", typeB: "I"
+      },
+
+      // 16-30: তথ্য গ্রহণ ও দৃষ্টিভঙ্গি (S vs N - বাস্তবমুখী বনাম দূরদর্শী/কল্পনাপ্রবণ)
+      {
+        id: 16,
+        dim: "SN",
+        scenario: "নতুন কোনো কাজ বা বিষয় শেখার সময় আপনার মনোযোগ মূলত কোথায় থাকে?",
+        optA: "বাস্তব তথ্য, বর্তমান বাস্তবতা এবং যার সরাসরি চাক্ষুষ প্রয়োগ রয়েছে।",
+        optB: "ভবিষ্যতের সম্ভাবনা, নতুন আইডিয়া এবং ভিন্নধর্মী কল্পনার সুযোগে।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 17,
+        dim: "SN",
+        scenario: "গল্প, উপন্যাস বা সিনেমা উপভোগ করার ক্ষেত্রে কোনটি আপনাকে বেশি আকর্ষণ করে?",
+        optA: "বাস্তবধর্মী কাহিনী ও স্পষ্ট ঘটনাপ্রবাহ, যা বাস্তবিক জীবনে ঘটতে পারে।",
+        optB: "রূপক অর্থ, গভীর দার্শনিক বার্তা ও রূপকথার মতো কাল্পনিক বিস্তার।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 18,
+        dim: "SN",
+        scenario: "কোনো কাজ করার জন্য আপনি কোন উপায়টি বেশি নির্ভরযোগ্য মনে করেন?",
+        optA: "প্রমাণিত পদ্ধতি ও অতীতের পরীক্ষিত অভিজ্ঞতা অনুযায়ী কাজ করা।",
+        optB: "গতানুগতিক নিয়ম ভেঙে সম্পূর্ণ নতুন কোনো অভিনব উপায় উদ্ভাবন করা।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 19,
+        dim: "SN",
+        scenario: "আপনার চিন্তাভাবনার স্বাভাবিক ধারা কেমন থাকে?",
+        optA: "বর্তমান মুহূর্ত ও চারপাশের বাস্তব ঘটনাগুলোর ওপর স্থির থাকে।",
+        optB: "ভবিষ্যতে কী হতে পারে বা কী রূপান্তর ঘটতে পারে তা নিয়ে দিবা স্বপ্ন দেখে।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 20,
+        dim: "SN",
+        scenario: "কেউ আপনাকে কোনো দিকনির্দেশনা দিলে আপনি কীভাবে দেখতে চান?",
+        optA: "ধাপে ধাপে পুঙ্খানুপুঙ্খ স্পষ্ট নির্দেশনা ও নিয়মাবলি।",
+        optB: "মূল কনসেপ্ট বা রূপরেখা, বাকিটা আমি নিজের মতো আবিষ্কার করব।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 21,
+        dim: "SN",
+        scenario: "কোনো বিষয় পর্যবেক্ষণ করার সময় আপনার স্বভাব কেমন হয়?",
+        optA: "চারপাশের ছোটখাটো বিস্তারিত বিষয় (Details) খুব দ্রুত খেয়াল করি।",
+        optB: "খুঁটিনাটির চেয়ে সামগ্রিক রূপ বা বড় ছবিটি (Big Picture) আগে চোখে পড়ে।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 22,
+        dim: "SN",
+        scenario: "কারও সাথে আলোচনা করার সময় আপনার দৃষ্টি মূলত কোনদিকে থাকে?",
+        optA: "তিনি মুখের কথায় যা স্পষ্ট বলেছেন, ঠিক সেটির ওপর।",
+        optB: "তার কথার পেছনের অন্তর্নিহিত উদ্দেশ্য বা রূপক ইঙ্গিত খোঁজার দিকে।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 23,
+        dim: "SN",
+        scenario: "কোনো সমস্যা সমাধানের ক্ষেত্রে আপনার শক্তি কোনটি?",
+        optA: "বাস্তববুদ্ধি ও বর্তমানের সহজলভ্য উপকরণ সঠিকভাবে ব্যবহার করা।",
+        optB: "অভাবনীয় সংযোগ খুঁজে বের করা এবং আউট-অব-দ্য-বক্স চিন্তা করা।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 24,
+        dim: "SN",
+        scenario: "বই পড়ার ক্ষেত্রে আপনি কোন ধরণকে প্রাধান্য দেন?",
+        optA: "বাস্তব ঘটনা, ইতিহাস, জীবনী বা ব্যবহারিক জ্ঞানের বই।",
+        optB: "দর্শন, ভবিষ্যৎ বিজ্ঞান, সাই-ফাই বা রূপকধর্মী সাহিত্য।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 25,
+        dim: "SN",
+        scenario: "সিদ্ধান্ত নেওয়ার ক্ষেত্রে আপনার ভেতরের প্রবৃত্তি কেমন?",
+        optA: "চোখে দেখা তথ্য-প্রমাণ ছাড়া কোনো ধারণাকে সত্যি বলে মানি না।",
+        optB: "স্পষ্ট তথ্য কম থাকলেও আমার ষষ্ঠ ইন্দ্রিয় বা ভেতরের অনুভূতির ওপর ভরসা করি।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 26,
+        dim: "SN",
+        scenario: "আপনার মনের ভাবনার গতি কেমন?",
+        optA: "একটি বিষয়ের সাথে ক্রমানুসারে সম্পর্কিত আরেকটিতে মনোযোগ যায়।",
+        optB: "এক ভাবনা থেকে সম্পূর্ণ অচেনা আরেক ভাবনায় হঠাৎ লাফিয়ে চলে যায়।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 27,
+        dim: "SN",
+        scenario: "কোনো তাত্ত্বিক জটিল আলোচনা আপনার কাছে কেমন লাগে?",
+        optA: "যদি বাস্তবে কোনো কাজে না আসে, তবে এসব তত্ত্ব নিয়ে কথা বলা অপ্রয়োজনীয়।",
+        optB: "বাস্তব কাজ না থাকলেও বুদ্ধিবৃত্তিক তত্ত্ব নিয়ে আলোচনা করা দারুণ চিত্তাকর্ষক।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 28,
+        dim: "SN",
+        scenario: "আপনি নিজেকে বেশি কোনটি মনে করেন?",
+        optA: "একজন পা মাটিতে থাকা বাস্তববাদী মানুষ।",
+        optB: "একজন ভবিষ্যতের স্বপ্নদ্রষ্টা ও উদ্ভাবনী মনের মানুষ।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 29,
+        dim: "SN",
+        scenario: "কোনো পুরোনো জিনিসের ক্ষেত্রে আপনার মনোভাব কী?",
+        optA: "যা এতদিন ভালো সার্ভিস দিচ্ছে, তাতেই থাকা নিরাপদ।",
+        optB: "ভালো চললেও আরও উন্নত কোনো নতুন বিকল্প আবিষ্কার করা উচিত।",
+        typeA: "S", typeB: "N"
+      },
+      {
+        id: 30,
+        dim: "SN",
+        scenario: "কোনো বিষয়ে কথা বলার সময় আপনার ভঙ্গি কেমন হয়?",
+        optA: "নির্দিষ্ট উদাহরণ ও স্পষ্ট তথ্যের ভিত্তিতে সরাসরি কথা বলা।",
+        optB: "উপমা, রূপক ও গভীর ভাবার্থের মাধ্যমে কথাকে ফুটিয়ে তোলা।",
+        typeA: "S", typeB: "N"
+      },
+
+      // 31-45: সিদ্ধান্ত গ্রহণ ও মূল্যবোধ (T vs F - যৌক্তিক বিচার বনাম অনুভূতি/আবেগ)
+      {
+        id: 31,
+        dim: "TF",
+        scenario: "কোনো গুরুত্বপূর্ণ সিদ্ধান্ত নেওয়ার ক্ষেত্রে আপনি কোনটিকে অগ্রাধিকার দেন?",
+        optA: "নিরপেক্ষ যুক্তি, বাস্তব লাভ-ক্ষতি ও সঠিক পরিসংখ্যান।",
+        optB: "নিজের অন্তরের মানবিক অনুভূতি এবং অন্যদের মনের ওপর এর প্রভাব।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 32,
+        dim: "TF",
+        scenario: "কোনো বন্ধু ভুলের কারণে কষ্টে পড়ে আপনার কাছে এলে আপনার প্রথম প্রতিক্রিয়া কী হয়?",
+        optA: "কী কারণে ভুল হলো তা ঠান্ডা মাথায় বুঝিয়ে সমস্যা সমাধানের পথ বাতলে দেওয়া।",
+        optB: "আগে তার মনের কষ্ট বোঝা, সান্ত্বনা দেওয়া এবং পাশে থাকার ভরসা দেওয়া।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 33,
+        dim: "TF",
+        scenario: "কারও সাথে কোনো বিষয়ে মতভেদ হলে আপনি কীভাবে কথা বলেন?",
+        optA: "সত্য ও স্পষ্ট যুক্তি মুখের ওপর তুলে ধরা, এতে অপরজন একটু কষ্ট পেলেও।",
+        optB: "অপরের মন যেন ভেঙে না যায়, সেভাবে কথা কিছুটা নরম ও ঘুরিয়ে বলা।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 34,
+        dim: "TF",
+        scenario: "কাজের জায়গায় সঠিক শৃঙ্খলা রক্ষায় কোনটি বেশি গুরুত্বপূর্ণ বলে মনে করেন?",
+        optA: "আইন ও নীতি সবার জন্য সমানভাবে কঠোর হওয়া উচিত, কারও ব্যক্তিগত ছাড় নয়।",
+        optB: "মানুষের বিশেষ পরিস্থিতি ও মানবিক বিষয়গুলো বিবেচনা করে ছাড় দেওয়া উচিত।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 35,
+        dim: "TF",
+        scenario: "কোনো তর্কে আপনার মূল লক্ষ্য কী থাকে?",
+        optA: "যুক্তি দিয়ে আসল সত্য কোনটি এবং কে সঠিক তা চূড়ান্তভাবে প্রমাণ করা।",
+        optB: "তর্কে তিক্ততা এড়িয়ে সবার মাঝে পারস্পরিক সম্প্রীতি ও ঐক্য বজায় রাখা।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 36,
+        dim: "TF",
+        scenario: "কোনো সিদ্ধান্ত নেওয়ার পর আপনার মন কোন কারণে বেশি তৃপ্ত হয়?",
+        optA: "সিদ্ধান্তটি সম্পূর্ণ যুক্তিযুক্ত, ত্রুটিহীন ও বাস্তবসম্মত হয়েছে।",
+        optB: "সিদ্ধান্তটির মাধ্যমে সবাই খুশি হয়েছে এবং কারও ক্ষতি হয়নি।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 37,
+        dim: "TF",
+        scenario: "অন্যের দুঃখ বা কান্নার দৃশ্য দেখলে আপনার ওপর কেমন প্রভাব পড়ে?",
+        optA: "পরিস্থিতিটি নির্লিপ্তভাবে পর্যবেক্ষণ করি এবং মূল কারণ বোঝার চেষ্টা করি।",
+        optB: "সহজেই আবেগাক্রান্ত হয়ে পড়ি এবং নিজের ভেতরে সেই কষ্ট গভীরভাবে অনুভব করি।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 38,
+        dim: "TF",
+        scenario: "আপনি নিজেকে বেশি কোনটির অনুসারী মনে করেন?",
+        optA: "মস্তিষ্কের শান্ত বিচারবুদ্ধি ও বাস্তব প্রজ্ঞা।",
+        optB: "হৃদয়ের নিখাদ অনুভূতি ও অন্তরের সহানুভূতি।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 39,
+        dim: "TF",
+        scenario: "কারও কাজে ভুলত্রুটি দেখলে আপনার স্বাভাবিক পদক্ষেপ কী হয়?",
+        optA: "সরাসরি গঠনমূলক সমালোচনা করে ভুলটি শুধরে দেওয়া।",
+        optB: "আগে তার ভালো কাজের প্রশংসা করে পরে খুব সতর্কতার সাথে ভুলটি তুলে ধরা।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 40,
+        dim: "TF",
+        scenario: "অন্যরা আপনার সম্পর্কে কী ভাবছে তা আপনাকে কতটা ভাবায়?",
+        optA: "আমি যদি সঠিক কাজ করি, তবে অন্যেরা কী ভাবল তাতে আমার কিছু যায় আসে না।",
+        optB: "অন্যের মতামত ও তাদের মূল্যায়ন আমার মনের ওপর বেশ গভীর প্রভাব ফেলে।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 41,
+        dim: "TF",
+        scenario: "কোনো টিম বা পরিবারের নেতৃত্ব দেওয়ার ক্ষেত্রে আপনার স্টাইল কোনটি?",
+        optA: "সঠিক ফলাফল, কর্মদক্ষতা ও নিরপেক্ষ মানদণ্ড নিশ্চিত করা।",
+        optB: "সবার মানসিক স্বস্তি, পারস্পরিক ভালোবাসা ও দলের মনোবল চাঙ্গা রাখা।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 42,
+        dim: "TF",
+        scenario: "কোনো সিনেমা বা নাটকের বিয়োগান্তক সমাপ্তি দেখে আপনার মনের অবস্থা কেমন হয়?",
+        optA: "এটি কেবল একটি গল্প—এই চিন্তা করে দ্রুত স্বাভাবিক হয়ে যাই।",
+        optB: "অনেকক্ষণ বা কয়েকদিন পর্যন্ত সেই চরিত্রের জন্য মনের ভেতর মন খারাপ থাকে।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 43,
+        dim: "TF",
+        scenario: "কেউ যদি কোনো বিষয়ে অতিরিক্ত আবেগপ্রবণ আচরণ করে, তখন আপনার প্রতিক্রিয়া কী হয়?",
+        optA: "কিছুটা অধৈর্য হয়ে পড়ি এবং যৌক্তিক কথা শোনার প্রত্যাশা করি।",
+        optB: "তার প্রতি মমতা জাগে এবং তাকে শান্ত করার চেষ্টা করি।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 44,
+        dim: "TF",
+        scenario: "একটি কঠিন সিদ্ধান্তে কাউকে বাদ দিতে হলে আপনি কী ভাবেন?",
+        optA: "প্রতিষ্ঠানের বৃহত্তর মঙ্গলের জন্য যা করণীয় তা কঠোরভাবে করাই সঠিক।",
+        optB: "ওই মানুষটির ব্যক্তিগত জীবন ও পরিবার কীভাবে ক্ষতিগ্রস্ত হবে তা ভেবে মন কাঁদে।",
+        typeA: "T", typeB: "F"
+      },
+      {
+        id: 45,
+        dim: "TF",
+        scenario: "আপনি প্রশংসিত হতে চান মূলত কোনটির জন্য?",
+        optA: "আমার প্রখর মেধা, যুক্তি ও কর্মদক্ষতার জন্য।",
+        optB: "আমার উদার হৃদয়, সহমর্মিতা ও মানুষের উপকারে আসার জন্য।",
+        typeA: "T", typeB: "F"
+      },
+
+      // 46-60: জীবনধারা ও কর্মপরিকল্পনা (J vs P - সুপরিকল্পিত বনাম নমনীয়/পর্যবেক্ষণশীল)
+      {
+        id: 46,
+        dim: "JP",
+        scenario: "দূরে কোথাও ভ্রমণের ক্ষেত্রে আপনার প্রস্তুতি সাধারণত কেমন থাকে?",
+        optA: "আগে থেকেই রুটিন, টিকিট, হোটেল ও কোন দিন কোথায় যাব সব চূড়ান্ত রাখা।",
+        optB: "তেমন কোনো প্ল্যান না করে তাৎক্ষণিক পরিস্থিতির ওপর ছেড়ে দেওয়া ও রোমাঞ্চ নেওয়া।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 47,
+        dim: "JP",
+        scenario: "পড়াশোনা বা কাজের ডেডলাইন সামলানোর ক্ষেত্রে আপনার অভ্যাস কোনটি?",
+        optA: "অনেক আগেই ধাপে ধাপে কাজ শেষ করে নিশ্চিন্তে সময় কাটাই।",
+        optB: "সাধারণত শেষ মুহূর্তের চাপের মধ্যেই আমার কাজের সেরা গতি ও ফলাফল বের হয়।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 48,
+        dim: "JP",
+        scenario: "আপনার পড়ার টেবিল, ব্যক্তিগত ঘর বা কাজের ডেস্কটি সচরাচর কেমন থাকে?",
+        optA: "প্রতিটি জিনিস নির্দিষ্ট স্থানে পরিপাটি ও সুন্দর করে গুছানো।",
+        optB: "কিছুটা অগোছালো বা এলোমেলো, তবে আমার প্রয়োজনীয় জিনিস খুঁজে পেতে সমস্যা হয় না।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 49,
+        dim: "JP",
+        scenario: "দৈনন্দিন জীবনে রুটিন বা নিয়ম মেনে চলার ব্যাপারে আপনার দৃষ্টিভঙ্গি কী?",
+        optA: "নির্দিষ্ট রুটিন মেনে চলা আমাকে মানসিক শান্তি ও কাজের শৃঙ্খলা দেয়।",
+        optB: "বাঁধাধরা রুটিন আমার স্বাধীনতা কেড়ে নেয়, আমি স্বাধীনভাবে কাজ করতে পছন্দ করি।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 50,
+        dim: "JP",
+        scenario: "আগে থেকে ঠিক করা কোনো পরিকল্পনায় হুট করে পরিবর্তন এলে আপনার কেমন লাগে?",
+        optA: "কিছুটা বিরক্ত বা অস্বস্তিবোধ করি, কারণ পুরো ছক ভেঙে যায়।",
+        optB: "খুব সহজেই নতুন পরিস্থিতির সাথে নিজেকে খাপ খাইয়ে নিতে পারি।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 51,
+        dim: "JP",
+        scenario: "কোনো কেনাকাটা করতে গেলে আপনি কীভাবে করেন?",
+        optA: "আগে থেকেই কী কী কিনব তার নির্দিষ্ট তালিকা তৈরি করে সেই অনুযায়ী কিনি।",
+        optB: "দোকানে ঘুরে ঘুরে যা পছন্দ হয় এবং যা প্রয়োজন মনে হয় তা তাৎক্ষণিক কিনি।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 52,
+        dim: "JP",
+        scenario: "কোনো কাজ করার সময় আপনার মানসিক অবস্থা কেমন থাকে?",
+        optA: "যতক্ষণ না কাজটি পুরোপুরি শেষ হচ্ছে, ততক্ষণ মনের ভেতর অস্বস্তি বা চাপ থাকে।",
+        optB: "কাজের মাঝখানে অন্য কাজে যাওয়া বা বিরতি নেওয়া আমার কাছে একদম স্বাভাবিক।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 53,
+        dim: "JP",
+        scenario: "কোনো গুরুত্বপূর্ণ বিষয়ে চূড়ান্ত সিদ্ধান্তে পৌঁছানোর ক্ষেত্রে আপনার মনোভাব কী?",
+        optA: "যত দ্রুত সম্ভব সিদ্ধান্ত চূড়ান্ত করে বিষয়টির নিষ্পত্তি করে ফেলা।",
+        optB: "শেষ মুহূর্ত পর্যন্ত যত বেশি সম্ভব বিকল্প অপশন খোলা রাখা।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 54,
+        dim: "JP",
+        scenario: "একসাথে একাধিক কাজ করার ক্ষেত্রে আপনার অভিজ্ঞতা কেমন?",
+        optA: "এক সময়ে একটি কাজ শেষ করে তবেই অন্য কাজে হাত দেওয়া পছন্দ করি।",
+        optB: "একসাথে অনেকগুলো কাজ শুরু করি এবং বিভিন্ন কাজের মাঝে অদলবদল করি।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 55,
+        dim: "JP",
+        scenario: "দৈনন্দিন কাজের জন্য আপনি কি টু-ডু লিস্ট (To-Do List) ব্যবহার করেন?",
+        optA: "হ্যাঁ, নিয়মিত কাজের তালিকা লিখে একটার পর একটা টিক চিহ্ন দিতে ভালোবাসি।",
+        optB: "না, মাথায় যা আসে পরিস্থিতি অনুযায়ী তা-ই করে ফেলি, তালিকার দরকার নেই।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 56,
+        dim: "JP",
+        scenario: "অবসর সময়ে কোনো কাজ শুরু করার ক্ষেত্রে আপনার প্রস্তুতি কেমন?",
+        optA: "আগে চারপাশের পরিবেশ ও দরকারি জিনিস গুছিয়ে নিয়ে তবেই কাজে বসি।",
+        optB: "পরিবেশ যেমনই থাকুক, সরাসরি কাজে ঢুকে পড়ি।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 57,
+        dim: "JP",
+        scenario: "ভবিষ্যতের জীবন নিয়ে আপনার মানসিক দৃষ্টিভঙ্গি কেমন?",
+        optA: "আগামী ৫ বা ১০ বছরের একটি সুনির্দিষ্ট ক্যারিয়ার ও জীবনের পরিকল্পনা রয়েছে।",
+        optB: "জীবন যেভাবে সামনে এগোবে, সেভাবে নিজেকে ভাসিয়ে নিয়ে সামনে চলার পক্ষপাতী।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 58,
+        dim: "JP",
+        scenario: "কোনো অনুষ্ঠান আয়োজন করার দায়িত্ব পেলে আপনি কীভাবে সামলান?",
+        optA: "অনেক আগেই প্রতিটি মিনিটের শিডিউল ও দায়িত্ব নির্দিষ্ট করে ফেলি।",
+        optB: "মূল ব্যাপারগুলো ঠিক রেখে বাকিটা অনুষ্ঠানের দিন তাৎক্ষণিকভাবে ম্যানেজ করি।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 59,
+        dim: "JP",
+        scenario: "কোনো কাজ শেষ করার আনন্দ আপনি কখন সবচেয়ে বেশি অনুভব করেন?",
+        optA: "যখন কাজটি একদম নিখুঁতভাবে শেষ হয়ে ফাইল বন্ধ করে রাখতে পারি।",
+        optB: "কাজটি চলাকালীন সময়ে নতুন কিছু আবিষ্কার ও প্রক্রিয়ার মধ্য দিয়ে যাওয়ার সময়।",
+        typeA: "J", typeB: "P"
+      },
+      {
+        id: 60,
+        dim: "JP",
+        scenario: "আপনার বন্ধু যদি আপনাকে হুট করে বলে '১০ মিনিটে রেডি হও, ঘুরতে যাব!' আপনার প্রতিক্রিয়া কী হবে?",
+        optA: "আগে থেকে না জানানোয় কিছুটা বিব্রত হব এবং হয়তো আপত্তি জানাব।",
+        optB: "উচ্ছ্বাসের সাথে সাথে সাথে কাপড় পরে বের হয়ে যাব।",
+        typeA: "J", typeB: "P"
+      }
+    ];
+// ============================================================
+    // ১৬টি ব্যক্তিত্বের পূর্ণাঙ্গ বাংলা ডাটাবেজ (16 Profiles Database)
+    // ============================================================
+    const personalityProfiles = {
+      INFJ: {
+        title: "দূরদর্শী পরামর্শদাতা ও পথপ্রদর্শক (The Advocate)",
+        pop: "বিশ্বে উপস্থিতি: মাত্র ১.৫% (বিরলতম ব্যক্তিত্ব)",
+        desc: [
+          "আপনি একজন গভীর চিন্তাশীল, আদর্শবাদী ও অন্তর্দৃষ্টিসম্পন্ন মানুষ। লোকদেখানো মেলামেশার চেয়ে মানুষের মনের গভীর অনুভূতি ও অর্থপূর্ণ সম্পর্ককে আপনি সবচেয়ে বেশি মূল্যায়ন করেন। আপনার ভেতরে একটি অত্যন্ত সংবেদনশীল হৃদয় এবং একই সাথে একটি দৃঢ় নীতিবোধ কাজ করে।",
+          "আপনি কেবল স্বপ্ন দেখেই ক্ষান্ত হন না, বরং সেই স্বপ্নকে কীভাবে বাস্তবে রূপ দিয়ে সমাজের বা মানুষের ইতিবাচক পরিবর্তন আনা যায়—তার জন্য সুনির্দিষ্ট পরিকল্পনা তৈরি করেন। আপনার ষষ্ঠ ইন্দ্রিয় বা অন্তর্দৃষ্টি প্রখর হওয়ায় অন্যের মুখে কিছু না বললেও আপনি তাদের কষ্ট সহজেই বুঝতে পারেন।",
+          "অনেক সময় নিজের মানসিক ও আত্মিক শক্তির চেয়ে বেশি দায়িত্ব নিজের কাঁধে তুলে নিয়ে আপনি ক্লান্ত হয়ে পড়েন। ব্যক্তিগত গোপনীয়তা রক্ষা করা আপনার কাছে পরম শান্তির বিষয়।"
+        ],
+        strengths: [
+          "অসাধারণ অন্তর্দৃষ্টি ও মানুষের অন্তর্নিহিত উদ্দেশ্য দ্রুত অনুধাবনের ক্ষমতা।",
+          "গভীর নীতিবোধ, সততা এবং ইতিবাচক সমাজ পরিবর্তনের তীব্র ইচ্ছা।",
+          "সৃজনশীল সমস্যা সমাধান ও দূরদর্শী দীর্ঘমেয়াদী পরিকল্পনা।",
+          "অন্যের দুঃখে নিজেকে উজাড় করে সহমর্মিতা প্রকাশ ও বিশ্বস্ত পরামর্শ প্রদান।"
+        ],
+        weaknesses: [
+          "সবকিছু নিখুঁত করার অতিরিক্ত তাগিদে (Perfectionism) মানসিক অবসাদে ভোগা।",
+          "নিজের দুঃখ-কষ্ট সহজে কারও কাছে প্রকাশ না করে মনের ভেতরে জমিয়ে রাখা।",
+          "সমালোচনা বা মতানৈক্যকে খুব ব্যক্তিগতভাবে নিয়ে অতিরিক্ত সংবেদনশীল হওয়া।",
+          "অন্যের উপকারে সময় দিতে গিয়ে নিজের মানসিক ও শারীরিক স্বাস্থ্যের ক্ষতি করা।"
+        ],
+        relationships: "বন্ধুত্ব ও সম্পর্কের ক্ষেত্রে আপনি পরিমাণের চেয়ে গুণমানকে বেশি গুরুত্ব দেন। অগভীর বা ক্ষণস্থায়ী আড্ডার চেয়ে এমন বন্ধু পছন্দ করেন যার সাথে জীবনের গভীর দর্শন ও স্বপ্ন নিয়ে ঘণ্টার পর ঘণ্টা কথা বলা যায়। সম্পর্কে আপনি নিঃশর্ত বিশ্বস্ততা ও মানসিক নিরাপত্তা প্রত্যাশা করেন।",
+        marriage: {
+          types: "ENFP এবং ENTP",
+          reason: "ENFP-এর প্রাণবন্ত উচ্ছ্বাস ও আন্তরিক উষ্ণতা INFJ-এর কিছুটা গম্ভীর মনের ওপর চমৎকার ইতিবাচক প্রভাব ফেলে। অন্যদিকে ENTP-এর প্রখর বুদ্ধিবৃত্তিক যুক্তি ও কৌতূহল INFJ-এর অন্তর্দৃষ্টির সাথে দারুণ ভারসাম্য বজায় রাখে। এই টাইপগুলো INFJ-এর জটিল ভাবনাকে গভীরভাবে বুঝতে পারে এবং তাদের নিজের খোলস থেকে বের করে সুন্দর দাম্পত্যের সূচনা করে।"
+        },
+        career: {
+          desc: "যেখানে মানুষের ব্যক্তিগত উন্নতি, সৃজনশীল স্বাধীনতা এবং নৈতিক উদ্দেশ্যের সমন্বয় ঘটে—এমন নিরিবিলি ও স্বাধীন পরিবেশ আপনার জন্য সবচেয়ে উপযুক্ত।",
+          roles: ["মনোবিজ্ঞানী / কাউন্সেলর", "লেখক ও গবেষক", "সংস্থার নীতিনির্ধারক", "শিক্ষক / ট্রেইনার", "সৃজনশীল ডিজাইনার", "সমাজসেবামূলক উদ্যোক্তা"]
+        },
+        growth: [
+          "জগতের সব মানুষকে খুশি করা বা সবার সমস্যা সমাধান করা আপনার একার দায়িত্ব নয়—এটি মনে রাখুন।",
+          "নিজের অনুভূতির জন্য একটি ব্যক্তিগত সীমানা (Healthy Boundaries) তৈরি করুন এবং প্রয়োজন হলে মুখের ওপর 'না' বলতে শিখুন।",
+          "সব কাজে অতিরিক্ত নিখুঁত হওয়ার চিন্তা পরিহার করে বাস্তবতার সাথে কিছুটা আপস করতে শিখুন।"
+        ],
+        famous: [
+          { name: "নেলসন ম্যান্ডেলা", role: "বিশ্বনেতা ও শান্তিদূত" },
+          { name: "রবীন্দ্রনাথ ঠাকুর", role: "বিশ্বকবি ও দার্শনিক" },
+          { name: "মার্টিন লুথার কিং জুনিয়র", role: "মানবাধিকার কর্মী" },
+          { name: "অ্যালবাস ডাম্বলডোর", role: "কাল্পনিক চরিত্র (হ্যারি পটার)" }
+        ]
+      },
+
+      INTJ: {
+        title: "কৌশলী স্থপতি ও দূরদর্শী পরিকল্পনাবিদ (The Architect)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ২.১%",
+        desc: [
+          "আপনি অত্যন্ত বুদ্ধিমান, কৌশলপ্রিয় ও আত্মবিশ্বাসী একজন মানুষ। যেকোনো বিষয়ে গভীর যুক্তি ও কার্যকারণ বিশ্লেষণ করা আপনার সহজাত স্বভাব। জীবনের প্রতিটি ক্ষেত্রকে আপনি একটি বিশাল দাবা খেলার মতো বিবেচনা করেন এবং সবসময় প্রতিপক্ষের কয়েক চাল আগেই প্রস্তুতি নিয়ে রাখেন।",
+          "গতানুগতিক নিয়ম বা ঐতিহ্যের চেয়ে আপনি দক্ষতা ও বাস্তব ফলাফলকে বেশি প্রাধান্য দেন। কোনো নিয়ম যদি অকার্যকর মনে হয়, তবে তা ভেঙে নতুন ও ফলপ্রসূ ব্যবস্থা গড়ে তুলতে আপনি বিন্দুমাত্র দ্বিধা করেন না।",
+          "বাইরে থেকে আপনাকে অনেক সময় আবেগহীন বা রাশভারী মনে হতে পারে, কিন্তু আপনার ভেতরের জগতে নীতি ও সত্যের প্রতি একনিষ্ঠ অনুরাগ থাকে।"
+        ],
+        strengths: [
+          "তীক্ষ্ণ যৌক্তিক মন ও জটিল সমস্যার অত্যন্ত দ্রুত কার্যকরী সমাধান বের করা।",
+          "প্রবল আত্মবিশ্বাস, স্বাধীনতা এবং কারও ওপর নির্ভরশীল না হয়ে কাজ করার মানসিকতা।",
+          "দীর্ঘমেয়াদী কৌশলগত দূরদৃষ্টি ও লক্ষ্য অর্জনে অবিচল নিষ্ঠা।",
+          "অযৌক্তিক আবেগ পরিহার করে বাস্তব সত্যের মুখোমুখি হওয়ার সাহস।"
+        ],
+        weaknesses: [
+          "অন্যের মানসিক আবেগ ও অনুভূতির প্রতি কিছুটা উদাসীন বা কঠোর হওয়া।",
+          "অতিরিক্ত বিশ্লেষণ করতে গিয়ে সরল বিষয়কেও জটিল বানিয়ে ফেলা।",
+          "সবার কাছ থেকে নিজের মতো নিখুঁত মানদণ্ড আশা করে দ্রুত অধৈর্য হয়ে ওঠা।",
+          "সামাজিক শিষ্টাচার বা খোশগল্পকে সময় নষ্ট ভেবে অন্যদের থেকে বিচ্ছিন্ন থাকা।"
+        ],
+        relationships: "আপনি মানুষের ভিড় এড়িয়ে চলেন এবং খুব অল্প মানুষের সাথে মেলামেশা করেন। সম্পর্কের ক্ষেত্রে আপনি মানসিক সততা ও বুদ্ধিবৃত্তিক সামঞ্জস্য খোঁজেন। যে মানুষ আপনার চিন্তাকে সমৃদ্ধ করতে পারে এবং স্বাধীনতায় হস্তক্ষেপ করে না, তাদের সাথে আজীবন বিশ্বস্ত বন্ধুত্ব রক্ষা করেন।",
+        marriage: {
+          types: "ENFP এবং ENTP",
+          reason: "ENFP-এর খোলামেলা আবেগ, উচ্ছ্বাস ও সামাজিক সহজতা INTJ-এর গম্ভীর ও কাঠামোগত জীবনে পরম সতেজতা ও উষ্ণতা এনে দেয়। অন্যদিকে ENTP-এর সাথে একটি চমৎকার বুদ্ধিবৃত্তিক বিতর্ক ও বোঝাপড়া গড়ে ওঠে, যা বৈবাহিক জীবনে একঘেয়েমি আসতে দেয় না।"
+        },
+        career: {
+          desc: "যেখানে পূর্ণ স্বাধীনতা নিয়ে জটিল সিস্টেম তৈরি, দীর্ঘমেয়াদী কৌশল প্রণয়ন এবং যৌক্তিক সিদ্ধান্ত নেওয়ার সুযোগ থাকে।",
+          roles: ["সফটওয়্যার আর্কিটেক্ট / টেক লিড", "ডেটা সায়েন্টিস্ট", "কৌশলগত বিনিয়োগকারী", "বিশ্ববিদ্যালয়ের অধ্যাপক", "ম্যানেজমেন্ট কনসালট্যান্ট"]
+        },
+        growth: [
+          "সব মানুষ শুধু যুক্তি দিয়ে পরিচালিত হয় না, মানুষের আবেগেরও বিশাল মূল্য রয়েছে—তা স্বীকার করুন।",
+          "নিজের অনুভূতিগুলো কাছের মানুষের কাছে প্রকাশ করতে শিখুন, এতে ভুল বোঝাবুঝি কমবে।",
+          "অন্যের ছোটখাটো ভুল বা কম দক্ষতাকে সহজভাবে ক্ষমা করতে ধৈর্যশীল হন।"
+        ],
+        famous: [
+          { name: "আইজ্যাক নিউটন", role: "বিজ্ঞানী ও গণিতবিদ" },
+          { name: "ইলন মাস্ক", role: "উদ্যোক্তা ও প্রযুক্তিবিদ" },
+          { name: "মার্ক জুকারবার্গ", role: "মেটা-এর প্রতিষ্ঠাতা" },
+          { name: "শার্লক হোমস", role: "কাল্পনিক গোয়েন্দা" }
+        ]
+      },
+
+      INFP: {
+        title: "আদর্শবাদী স্বপ্নদ্রষ্টা ও মধ্যস্থতাকারী (The Mediator)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ৪.৪%",
+        desc: [
+          "আপনি একজন শান্ত, খাঁটি মনের সংবেদনশীল মানুষ। আপনার অন্তর্জগৎ অত্যন্ত সমৃদ্ধ, কল্পনাপ্রবণ এবং গভীর মানবিক মূল্যবোধে ভরপুর। আপনি সবসময় পৃথিবীটাকে আরও সুন্দর ও ভালোবাসাপূর্ণ একটি স্থান হিসেবে দেখতে স্বপ্ন দেখেন।",
+          "আপনি খুব সহানুভূতিশীল এবং অবচেতনভাবেই অন্যের দুঃখ-কষ্ট নিজের ভেতর অনুভব করেন। অর্থ বা খ্যাতির চেয়ে আত্মিক শান্তি এবং নিজের মূল্যবোধের সাথে সঙ্গতিপূর্ণ জীবনযাপন করা আপনার কাছে পরম পাওয়া।",
+          "বাইরে থেকে আপনাকে অত্যন্ত শান্তশিষ্ট মনে হলেও আপনার ভেতরের নীতিবোধ ও পছন্দের বিষয়ের ওপর আঘাত আসলে আপনি অত্যন্ত দৃঢ় অবস্থান নেন।"
+        ],
+        strengths: [
+          "গভীর সহমর্মিতা, কোমল হৃদয় ও মানুষকে নিঃশর্ত বোঝার ক্ষমতা।",
+          "অনন্য সৃজনশীলতা, সাহিত্য ও শিল্পকলার প্রতি গভীর অনুরাগ।",
+          "ব্যক্তিগত সততা ও নিজের আদর্শের প্রতি আজীবন অবিচল থাকা।",
+          "বিরোধপূর্ণ পরিস্থিতিতে চমৎকার সমঝোতা ও শান্তি ফিরিয়ে আনা।"
+        ],
+        weaknesses: [
+          "বাস্তব পৃথিবীর রূঢ়তাকে মেনে নিতে না পেরে কল্পনার জগতে লুকিয়ে থাকা।",
+          "সমালোচনাকে অতিরিক্ত ব্যক্তিগতভাবে নেওয়া এবং দীর্ঘ সময় মন খারাপ রাখা।",
+          "কাজের পরিকল্পনা করলেও বাস্তব পদক্ষেপ নিতে দেরি করা বা সিদ্ধান্তহীনতা।",
+          "অন্যের সমস্যা নিয়ে অতিরিক্ত ভেবে নিজের মানসিক শক্তি নিঃশেষ করে ফেলা।"
+        ],
+        relationships: "আপনি মানুষের সাথে খুব গভীর ও নিখাদ আত্মিক বন্ধন খোঁজেন। আপনার বন্ধুরা জানে যে কোনো বিচার ছাড়া তারা তাদের মনের সব গোপন কথা আপনাকে বলতে পারে। আপনি কখনো বন্ধুত্বে স্বার্থপরতা পছন্দ করেন না।",
+        marriage: {
+          types: "ENFJ এবং ENTJ",
+          reason: "ENFJ-এর স্বভাবজাত যত্নশীল নেতৃত্ব এবং উষ্ণ ভালোবাসা INFP-কে পরম নিরাপত্তা ও মানসিক স্বস্তি দেয়। অন্যদিকে ENTJ-এর বাস্তববাদী কর্মস্পৃহা ও আত্মবিশ্বাস INFP-এর অন্তরের চমৎকার স্বপ্নগুলোকে বাস্তবে বাস্তবায়িত করতে দিকনির্দেশনা প্রদান করে।"
+        },
+        career: {
+          desc: "যেখানে সৃজনশীলতা প্রকাশ, মানবসেবা এবং সম্পূর্ণ মুক্ত ও চাপমুক্ত পরিবেশে কাজ করার স্বাধীনতা রয়েছে।",
+          roles: ["সাহিত্যিক / কবি / সাংবাদিক", "মনোস্তাত্ত্বিক কাউন্সেলর", "গ্রাফিক ডিজাইনার / শিল্পী", "এনজিও কর্মী", "শিক্ষক / প্রশিক্ষক"]
+        },
+        growth: [
+          "বাস্তব পদক্ষেপ গ্রহণ করুন; স্বপ্ন দেখার পাশাপাশি প্রতিদিনের ছোট ছোট লক্ষ্য ঠিক করে তা বাস্তবায়ন করুন।",
+          "নেতিবাচক সমালোচনাকে নিজের ব্যর্থতা না ভেবে উন্নতির একটি সুযোগ হিসেবে গ্রহণ করতে শিখুন।",
+          "সব সময় নিজেকে অপরাধী ভাবা বন্ধ করুন এবং নিজের গুণগুলোকে সম্মান জানাতে শিখুন।"
+        ],
+        famous: [
+          { name: "উইলিয়াম শেক্সপিয়ার", role: "বিশ্ববিখ্যাত নাট্যকার" },
+          { name: "জন লেনন", role: "সংগীতশিল্পী ও শান্তিকর্মী" },
+          { name: "জীবনানন্দ দাশ", role: "প্রখ্যাত বাঙালি কবি" },
+          { name: "ফ্রডো ব্যাগিন্স", role: "কাল্পনিক চরিত্র (লর্ড অব দ্য রিং)" }
+        ]
+      },
+
+      INTP: {
+        title: "উদ্ভাবনী গবেষক ও তত্ত্বচিন্তাবিদ (The Logician)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ৩.৩%",
+        desc: [
+          "আপনি জ্ঞানের অতৃপ্ত পিপাসু, মৌলিক চিন্তাবিদ এবং যেকেনো বিষয়ের নিখুঁত যৌক্তিক ভিত্তি অনুসন্ধানী। মহাবিশ্ব কীভাবে কাজ করে, যেকোনো সিস্টেমের আসল মেকানিজম কী—তা উদ্ঘাটন করাই আপনার মনের প্রধান আনন্দ।",
+          "আপনি অসার সামাজিক আনুষ্ঠানিকতা বা গতানুগতিক ছক একেবারেই পছন্দ করেন না। কোনো একটি নতুন তত্ত্ব বা বুদ্ধিবৃত্তিক ধাঁধা পেলে আপনি ঘণ্টার পর ঘণ্টা বাইরের পৃথিবী ভুলে তাতে মগ্ন থাকতে পারেন।",
+          "আপনার মস্তিষ্ক সবসময় সচল থাকে এবং কোনো ধারণার মাঝে সামান্যতম অমিল বা অসঙ্গতি দেখলেও আপনার তীক্ষ্ণ দৃষ্টি তা ধরে ফেলে।"
+        ],
+        strengths: [
+          "অসাধারণ মৌলিক চিন্তাশক্তি ও জটিল বৈজ্ঞানিক বিশ্লেষণ।",
+          "সম্পূর্ণ পক্ষপাতহীন ও নৈর্ব্যক্তিক সত্য অনুসন্ধানের মানসিকতা।",
+          "যেকোনো বিষয়ে দ্রুত মূল সমস্যা বা রুট কজ (Root Cause) চিহ্নিত করা।",
+          "উন্মুক্ত মন এবং নতুন ও অপ্রচলিত ধারণাকে সহজে গ্রহণ করার ক্ষমতা।"
+        ],
+        weaknesses: [
+          "আইডিয়া তৈরি করলেও তা বাস্তবায়ন বা শেষ করতে আলস্য বা অনীহা প্রকাশ।",
+          "সামাজিক রীতিনীতি ও মানুষের সূক্ষ্ম আবেগ বুঝতে কিছুটা অপারগ হওয়া।",
+          "নিজের চিন্তায় এত ডুবে থাকা যে চারপাশের বাস্তব জগত থেকে বিচ্ছিন্ন হয়ে পড়া।",
+          "সবকিছুতে অতিরিক্ত সন্দেহ প্রকাশ করা এবং অতিরিক্ত ব্যাখ্যার ফাঁদে পড়া।"
+        ],
+        relationships: "আপনি এমন বন্ধু পছন্দ করেন যাদের সাথে মহাবিশ্ব, বিজ্ঞান, প্রযুক্তি বা দর্শন নিয়ে যুক্তিপূর্ণ তর্ক করা যায়। আবেগঘন কান্নাকাটি বা নাটকীয়তায় আপনি অস্বস্তিবোধ করেন, তবে বুদ্ধিবৃত্তিক সততায় আপনি আজীবন নির্ভরযোগ্য বন্ধু।",
+        marriage: {
+          types: "ENTJ এবং ENFJ",
+          reason: "ENTJ-এর সংগঠন ক্ষমতা ও দৃঢ়তা INTP-এর চিন্তাশীল রূপরেখাকে একটি বাস্তব রূপ দেয়। অন্যদিকে ENFJ-এর স্নেহময় ও সামাজিক স্বভাব INTP-কে তার নিজস্ব গণ্ডি থেকে বের করে জীবনের মানবিক ও সামাজিক দিকগুলোর সাথে সুন্দরভাবে পরিচয় করিয়ে দেয়।"
+        },
+        career: {
+          desc: "যেখানে নতুন গবেষণা, স্বাধীন পরীক্ষা-নিরীক্ষা এবং জটিল বুদ্ধিবৃত্তিক সমস্যার সমাধান করার সুযোগ আছে।",
+          roles: ["সফটওয়্যার ইঞ্জিনিয়ার / অ্যালগরিদম ডিজাইনার", "গবেষক / বিজ্ঞানী", "সিস্টেম অ্যানালিস্ট", "গণিতবিদ / অধ্যাপক", "কৌশলগত উদ্ভাবক"]
+        },
+        growth: [
+          "কেবল ভাবলেই চলবে না, আইডিয়াগুলোকে বাস্তবে শেষ করার মানসিক শৃঙ্খলা গড়ে তুলুন।",
+          "কাছের মানুষের অনুভূতির গুরুত্ব দিন; সবসময় সত্য প্রমাণের চেয়ে মন রক্ষা করা বেশি মানবিক।",
+          "শারীরিক ব্যায়াম ও বর্তমান চারপাশের জগতের প্রতি সচেতন হওয়ার অভ্যাস চর্চা করুন।"
+        ],
+        famous: [
+          { name: "অ্যালবার্ট আইনস্টাইন", role: "নোবেলজয়ী পদার্থবিজ্ঞানী" },
+          { name: "চার্লস ডারউইন", role: "প্রকৃতিবিজ্ঞানী ও বিবর্তন তত্ত্ববিদ" },
+          { name: "বিল গেটস", role: "প্রযুক্তিবিদ ও সমাজসেবক" },
+          { name: "নিও", role: "কাল্পনিক চরিত্র (দ্য ম্যাট্রিক্স)" }
+        ]
+      },
+
+      ENFJ: {
+        title: "প্রেরণাদায়ী পথপ্রদর্শক ও স্বভাবনেতা (The Protagonist)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ২.৫%",
+        desc: [
+          "আপনি একজন অত্যন্ত আকর্ষণীয় ব্যক্তিত্বের অধিকারী, স্নেহময় এবং মানুষের কল্যাণে নিবেদিতপ্রাণ নেতা। মানুষের সুপ্ত সম্ভাবনাকে জাগিয়ে তোলা এবং সবাইকে ঐক্যবদ্ধ করে একটি মহৎ লক্ষ্যে এগিয়ে নিয়ে যাওয়ার এক সহজাত প্রতিভা রয়েছে আপনার মধ্যে।",
+          "আপনার যোগাযোগ দক্ষতা অত্যন্ত চমৎকার। আপনি যখন কথা বলেন, মানুষ তা মন দিয়ে শোনে এবং অনুপ্রাণিত হয়। অন্যের কষ্ট ও বেদনা আপনার হৃদয়কে গভীরভাবে নাড়া দেয়।",
+          "আপনি সম্পর্কগুলোর মধ্যে সবসময় সম্প্রীতি ও ভালোবাসা দেখতে চান এবং সবার মঙ্গলের জন্য নিজের সর্বস্ব দিয়ে লড়াই করতে পারেন।"
+        ],
+        strengths: [
+          "প্রবল ক্যারিশম্যাটিক ব্যক্তিত্ব ও অসাধারণ অনুপ্রেরণাদায়ী নেতৃত্ব।",
+          "সহজাত বাগ্মিতা ও মানুষকে এক ছাতার নিচে ঐক্যবদ্ধ করার ক্ষমতা।",
+          "প্রগাঢ় সহমর্মিতা ও মানুষের প্রয়োজন আগে থেকেই অনুভব করার গুণ।",
+          "পরোপকারী মানসিকতা ও নির্ভরযোগ্য বিশ্বস্ত চরিত্র।"
+        ],
+        weaknesses: [
+          "অন্যের সমস্যা সমাধান করতে গিয়ে নিজের মানসিক স্বাস্থ্য ধ্বংস করে ফেলা।",
+          "অতিরিক্ত আদর্শবাদী হওয়ার কারণে বাস্তব মানুষের ত্রুটিতে চরম হতাশ হওয়া।",
+          "সবার ভালোবাসা ও স্বীকৃতি পাওয়ার ব্যাপারে অতিরিক্ত ব্যাকুল থাকা।",
+          "কখনো কখনো অতিরিক্ত সুরক্ষাপ্রবণ বা অন্যের ব্যাপারে বেশি নাক গলানো।"
+        ],
+        relationships: "আপনি মানুষের মধ্যমণি এবং বন্ধুদের জীবনে এক পরম ভরসার আশ্রয়। আপনি প্রিয়জনদের সবসময় উৎসাহিত করেন এবং তাদের যেকোনো সংকটে রাত-বিরাতে পাশে দাঁড়াতে দ্বিতীয়বার ভাবেন না।",
+        marriage: {
+          types: "INFP এবং ISFP",
+          reason: "INFP-এর অন্তরের খাঁটি আবেগ ও মূল্যবোধ ENFJ-এর ভালোবাসাপূর্ণ নেতৃত্বকে একটি পবিত্র আশ্রয় দেয়। আবার ISFP-এর শৈল্পিক ও সরল স্বভাব ENFJ-এর অতিরিক্ত ব্যস্ত মনকে পরম প্রশান্তি ও নির্ভরতা জোগায়। এই মেলবন্ধন দাম্পত্যে পারস্পরিক শ্রদ্ধা ও উষ্ণতা বজায় রাখে।"
+        },
+        career: {
+          desc: "যেখানে সরাসরি মানুষের সাথে কাজ করা যায়, তাদের পথ দেখানো যায় এবং দলগত উন্নয়ন নিশ্চিত করা যায়।",
+          roles: ["এইচআর ডিরেক্টর", "শিক্ষক / মোটিভেশনাল স্পিকার", "পাবলিক রিলেশন্স ম্যানেজার", "সমাজকর্মী / রাজনীতিবিদ", "ক্লিনিক্যাল সাইকোলজিস্ট"]
+        },
+        growth: [
+          "সবাইকে খুশি করা সম্ভব নয়—এই কঠিন সত্যটি মন থেকে মেনে নিন।",
+          "অন্যদের জন্য জীবন বিলিয়ে দেওয়ার আগে নিজের বিশ্রামের জন্য সময় বের করুন।",
+          "কখনো কখনো নিজের স্বার্থপর হওয়া এবং 'না' বলাও সুস্থ জীবনের জন্য দরকার।"
+        ],
+        famous: [
+          { name: "বারাক ওবামা", role: "সাবেক মার্কিন প্রেসিডেন্ট" },
+          { name: "ওপরা উইনফ্রে", role: "প্রখ্যাত গণমাধ্যম ব্যক্তিত্ব" },
+          { name: "বঙ্গবন্ধু শেখ মুজিবুর রহমান", role: "কালজয়ী রাজনৈতিক নেতা" },
+          { name: "মরফিয়াস", role: "কাল্পনিক চরিত্র (দ্য ম্যাট্রিক্স)" }
+        ]
+      },
+
+      ENTJ: {
+        title: "দৃঢ়চেতা অধিনায়ক ও কৌশলগত শাসক (The Commander)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ১.৮%",
+        desc: [
+          "আপনি একজন প্রাকৃতিক জন্মগত নেতা, প্রবল আত্মবিশ্বাসী এবং লক্ষ্য অর্জনে দৃঢ়প্রতিজ্ঞ। যেকোনো বড় সংকট বা চ্যালেঞ্জে আপনি পিছপা হন না, বরং সামনে দাঁড়িয়ে নেতৃত্ব দেন এবং সুস্পষ্ট দিকনির্দেশনা তৈরি করেন।",
+          "আপনি সময় নষ্ট করা, অদক্ষতা ও অলসতাকে চরম ঘৃণা করেন। যেকোনো ব্যবস্থাকে কীভাবে সর্বোচ্চ দক্ষ ও সফল করা যায়, তা আপনি নিমিষেই বের করে ফেলতে পারেন।",
+          "আপনার সিদ্ধান্তগুলো সম্পূর্ণ যৌক্তিক এবং বাস্তবমুখী। অনেকে আপনাকে কিছুটা কঠোর ভাবতে পারে, তবে আপনার মূল উদ্দেশ্য থাকে ফলাফল নিশ্চিত করা।"
+        ],
+        strengths: [
+          "অটল আত্মবিশ্বাস, স্পষ্ট ও নির্ভীক নেতৃত্ব দেওয়ার সহজাত ক্ষমতা।",
+          "কঠিন পরিস্থিতিতে দ্রুততম সময়ে সেরা কৌশলগত ও যৌক্তিক সিদ্ধান্ত গ্রহণ।",
+          "বড় লক্ষ্য স্থির করে সুশৃঙ্খলভাবে তা বাস্তবায়ন করা।",
+          "দক্ষ সংগঠন পরিচালনা ও মানুষকে কাজে লাগিয়ে সেরা আউটপুট বের করা।"
+        ],
+        weaknesses: [
+          "অন্যের মানসিক অনুভূতি বা আবেগের প্রতি কঠোর ও অসহিষ্ণু আচরণ করা।",
+          "নিজের মতামতের বাইরে অন্যের মতামতকে গুরুত্ব না দেওয়ার প্রবণতা।",
+          "কাজের জায়গায় অতিরিক্ত কর্তৃত্বপরায়ণ হয়ে ওঠা।",
+          "সবসময় জিততেই হবে—এমন মনোভাবের কারণে সম্পর্কের ক্ষতি হওয়া।"
+        ],
+        relationships: "আপনি ব্যক্তিত্ববান ও আত্মবিশ্বাসী মানুষের সঙ্গ পছন্দ করেন। বন্ধুত্বে আপনি বিশ্বস্ত ও কার্যকর সমর্থন জোগান। কেউ অন্যায় বা অযৌক্তিক আচরণ করলে আপনি স্পষ্টভাষী হয়ে তা মুখের ওপর বলে দেন।"
+        ,
+        marriage: {
+          types: "INTP এবং INFP",
+          reason: "INTP-এর গভীর বুদ্ধিবৃত্তিক জ্ঞান ও তত্ত্ব ENTJ-এর বাস্তবায়ন ক্ষমতাকে শাণিত করে তোলে। অন্যদিকে INFP-এর আন্তরিক কোমলতা ও মানসিক মূল্যবোধ ENTJ-এর কঠোর বাস্তবতাকে প্রশমিত করে একটি মমতাময়ী ভারসাম্যপূর্ণ পারিবারিক জীবন উপহার দেয়।"
+        },
+        career: {
+          desc: "যেখানে উচ্চ পর্যায়ের নেতৃত্ব, কঠিন সিদ্ধান্ত গ্রহণ এবং বড় প্রতিষ্ঠান পরিচালনার কর্তৃত্ব থাকে।",
+          roles: ["সিইও / চিফ এক্সিকিউটিভ", "ব্যবসায়িক উদ্যোক্তা", "কর্পোরেট আইনজীবী", "ম্যানেজমেন্ট ডিরেক্টর", "প্রকল্প পরিচালক"]
+        },
+        growth: [
+          "মনে রাখবেন, জয়লাভ করার চেয়ে মানুষের মন জয় করা অনেক সময় বেশি গুরুত্বপূর্ণ।",
+          "অন্যের মতামত মনোযোগ দিয়ে শুনুন এবং তাদের ধীরগতির কাজের প্রতি ধৈর্যশীল হন।",
+          "কাজের বাইরে পরিবার ও বন্ধুদের সাথে সময় কাটানোর সময় নিজের 'বস' মানসিকতা দূরে রাখুন।"
+        ],
+        famous: [
+          { name: "স্টিভ জবস", role: "অ্যাপলের প্রতিষ্ঠাতা ও স্বপ্নদ্রষ্টা" },
+          { name: "জুলিয়াস সিজার", role: "রোমান সমরনায়ক ও রাষ্ট্রপ্রধান" },
+          { name: "মার্গারেট থ্যাচার", role: "যুক্তরাজ্যের সাবেক প্রধানমন্ত্রী" },
+          { name: "টনি স্টার্ক (আয়রন ম্যান)", role: "কাল্পনিক সুপারহিরো" }
+        ]
+      },
+
+      ENFP: {
+        title: "অনুপ্রেরণাদায়ী মুক্তমনা ও সৃজনশীল প্রচারক (The Campaigner)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ৮.১%",
+        desc: [
+          "আপনি একজন প্রাণচঞ্চল, আশাবাদী এবং অফুরন্ত সম্ভাবনায় বিশ্বাসী স্বাধীনচেতা মানুষ। চারপাশের মানুষ ও ঘটনাকে আপনি এক অদ্ভুত ইতিবাচক দৃষ্টিতে দেখেন। আপনার উপস্থিতি যেকোনো নিরানন্দ পরিবেশকে মুহূর্তেই সজীব করে তোলে।",
+          "আপনি মানুষের আবেগ বুঝতে দারুণ পারদর্শী এবং মানুষের ভেতরে থাকা ভালো গুণগুলোকে খুঁজে বের করতে ভালোবাসেন। গতানুগতিক নিয়মের বেড়াজাল বা একঘেয়ে রুটিন আপনার সৃষ্টিশীলতাকে দমিয়ে দেয়।",
+          "আপনার মাথায় সবসময় নতুন নতুন আইডিয়া ও স্বপ্নের আনাগোনা থাকে। আপনি এমন জীবনযাপন করতে চান যেখানে প্রতিটি দিন হবে নতুন কোনো রোমাঞ্চের শুরু।"
+        ],
+        strengths: [
+          "অসাধারণ উদ্ভাবনী কল্পনাশক্তি ও আউট-অব-দ্য-বক্স আইডিয়া তৈরি।",
+          "সংক্রামক উদ্দীপনা ও অন্যদের কাজে উদ্বুদ্ধ করার জাদুকরী ক্ষমতা।",
+          "উষ্ণ ও আন্তরিক যোগাযোগ দক্ষতা এবং দ্রুত যেকোনো মানুষের হৃদয় জয় করা।",
+          "খোলামেলা মানসিকতা ও জীবনের পরিবর্তনের সাথে সহজে খাপ খাইয়ে নেওয়া।"
+        ],
+        weaknesses: [
+          "একসাথে অনেকগুলো কাজ শুরু করলেও শেষ পর্যন্ত মনোযোগ ধরে রাখতে না পারা।",
+          "ছোটখাটো বাস্তব রুটিন বা বিস্তারিত তথ্য (Details) নিয়ে কাজ করতে একঘেয়েমি লাগা।",
+          "অতিরিক্ত আবেগপ্রবণ হয়ে অনেক সময় ভুল ও হঠকারী সিদ্ধান্ত নেওয়া।",
+          "অন্যরা আপনার আচরণ নিয়ে কী ভাবল তা নিয়ে অতিমাত্রায় চিন্তিত থাকা।"
+        ],
+        relationships: "আপনি মানুষের জীবনে আনন্দের ফোয়ারা। বন্ধুদের যেকোনো দুঃখ বা মন খারাপের মুহূর্তে আপনি তাদের মুখে হাসি ফোটাতে পারেন। আপনি এমন বন্ধু চান যারা আপনার পাগলামি ও বড় বড় স্বপ্নকে আপন করে নেবে।",
+        marriage: {
+          types: "INTJ এবং INFJ",
+          reason: "INTJ-এর স্থিরতা, যৌক্তিক গভীরতা ও শৃঙ্খলা ENFP-এর চঞ্চল ও ছড়ানো প্রতিভাকে একটি মজবুত নোঙর দেয়। অন্যদিকে INFJ-এর আন্তরিক দূরদর্শিতা ENFP-কে অন্তরের গভীর থেকে বুঝতে পারে, ফলে তাদের দাম্পত্যে ভালোবাসা ও মানসিক শান্তির এক অপূর্ব মিলন ঘটে।"
+        },
+        career: {
+          desc: "যেখানে নতুন নতুন আইডিয়া তৈরি, স্বাধীনভাবে মানুষের সাথে মেলামেশা এবং সৃষ্টিশীল কাজের অবারিত সুযোগ রয়েছে।",
+          roles: ["সৃজনশীল পরিচালক / বিজ্ঞাপন নির্মাতা", "সাংবাদিক / কনটেন্ট ক্রিয়েটর", "ইভেন্ট প্ল্যানার", "পাবলিক স্পিকার", "কাউন্সেলর / ট্রেইনার"]
+        },
+        growth: [
+          "একটি কাজ পুরোপুরি শেষ করে তবেই নতুন আরেকটি কাজে হাত দেওয়ার অভ্যাস তৈরি করুন।",
+          "আবেগের তোড়ে কোনো আর্থিক বা জীবনের বড় সিদ্ধান্ত নেবেন না; একটু সময় নিয়ে ভাবুন।",
+          "দৈনন্দিন জীবনের প্রয়োজনীয় রুটিনগুলোকে বোঝা না ভেবে জীবনের শৃঙ্খলার অংশ হিসেবে গ্রহণ করুন।"
+        ],
+        famous: [
+          { name: "রবিন উইলিয়ামস", role: "কিংবদন্তি অভিনেতা ও কৌতুকশিল্পী" },
+          { name: "ওয়াল্ট ডিজনি", role: "ডিজনি-এর প্রতিষ্ঠাতা ও অ্যানিমেটর" },
+          { name: "মার্ক টোয়েন", role: "বিখ্যাত ঔপন্যাসিক ও রম্যলেখক" },
+          { name: "স্পাইডার-ম্যান (পিটার পার্কার)", role: "কাল্পনিক কমিক চরিত্র" }
+        ]
+      },
+
+      ENTP: {
+        title: "উদ্ভাবনী তার্কিক ও ক্ষুরধার বিশ্লেষক (The Debater)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ৩.২%",
+        desc: [
+          "আপনি তীক্ষ্ণ বুদ্ধিসম্পন্ন, চতুর এবং বুদ্ধিবৃত্তিক দ্বৈরথে অংশ নিতে দারুণ ভালোবাসেন। যেকোনো প্রচলিত ধারণাকে প্রশ্নবিদ্ধ করা এবং ভিন্ন দৃষ্টিকোণ থেকে প্রমাণ করাই আপনার সবচেয়ে বড় আনন্দ।",
+          "আপনার চিন্তার গতি অত্যন্ত দ্রুত এবং আপনার সেন্স অব হিউমার ক্ষুরধার। আপনি কোনো সমস্যা দেখলে প্রচলিত সমাধান খোঁজার বদলে সম্পূর্ণ ভিন্নধর্মী ও অভিনব সমাধানের পথ বের করেন।",
+          "কোনো কাজে আপনার আগ্রহ ততক্ষণই প্রবল থাকে যতক্ষণ সেখানে মানসিক চ্যালেঞ্জ থাকে। কাজটি রুটিনে পরিণত হলেই আপনার আগ্রহ কমতে শুরু করে।"
+        ],
+        strengths: [
+          "দ্রুততম প্রত্যুৎপন্নমতিত্ব এবং তাৎক্ষণিক যেকোনো বিষয়ের যুক্তি তৈরি করা।",
+          "অসাধারণ উদ্ভাবনী মস্তিষ্ক ও জটিল ধাঁধার সমাধান আবিষ্কারের প্রতিভা।",
+          "অকুতোভয় মানসিকতা ও নতুন সম্ভাবনার ঝুঁকি নেওয়ার সাহস।",
+          "চমৎকার সামাজিক যোগাযোগ ও যেকোনো আলোচনায় নেতৃত্ব দেওয়ার সক্ষমতা।"
+        ],
+        weaknesses: [
+          "কেবল বিতর্কের আনন্দের জন্য তর্ক করতে গিয়ে কাছের মানুষদের অনুভূতিতে আঘাত দেওয়া।",
+          "পরিকল্পনা করলেও বাস্তবায়নের বিস্তারিত খুঁটিনাটি কাজ শেষ করতে তীব্র অনীহা।",
+          "গতানুগতিক নিয়মকানুন ও কর্তৃপক্ষের নির্দেশনার প্রতি প্রকাশ্য অবাধ্যতা।",
+          "ধৈর্যের অভাব এবং একই বিষয়ে দীর্ঘসময় লেগে থাকার অনীহা।"
+        ],
+        relationships: "আপনি এমন সঙ্গীদের ভালোবাসেন যারা আপনার কথার পিঠে কথা বলতে পারে এবং যেকোনো বুদ্ধিবৃত্তিক বিষয়ে চ্যালেঞ্জ ছুড়ে দিতে পারে। আপনি বন্ধুদের সাথে প্রাণবন্ত আলোচনা করতে ভালোবাসেন এবং কৃত্রিমতা একদম সহ্য করেন না।",
+        marriage: {
+          types: "INFJ এবং INTJ",
+          reason: "INFJ-এর মানসিক গভীরতা, রহস্যময় অন্তর্দৃষ্টি ও শান্ত প্রকৃতি ENTP-কে আজীবন মুগ্ধ করে রাখে এবং তাদের তর্কের ঝাঁজকে ভালোবাসায় পরিণত করে। আবার INTJ-এর ক্ষুরধার কৌশল ও মানসিক স্বাধীনতা ENTP-এর বুদ্ধিবৃত্তিক ক্ষুধাকে তৃপ্ত করে একটি সমঝতাপূর্ণ বৈবাহিক জীবন দেয়।"
+        },
+        career: {
+          desc: "যেখানে উদ্ভাবন, নতুন কৌশল নির্ধারণ, জটিল সমস্যার সমাধান এবং বুদ্ধিবৃত্তিক স্বাধীনতা বজায় থাকে।",
+          roles: ["স্টার্টআপ প্রতিষ্ঠাতা / উদ্যোক্তা", "আইনজীবী / লিগ্যাল অ্যাডভাইজার", "ইনোভেশন কনসালট্যান্ট", "বিজ্ঞাপনী স্ট্র্যাটেজিস্ট", "সফটওয়্যার ডেভেলপার"]
+        },
+        growth: [
+          "মনে রাখবেন, সব তর্কে জয়লাভ করাই সফলতা নয়; মানুষের সাথে উষ্ণ সম্পর্ক বজায় রাখা অনেক বড় সম্পদ।",
+          "নিজের তৈরি দুর্দান্ত আইডিয়াগুলোকে মাঝপথে ফেলে না রেখে বাস্তব রূপ দেওয়ার ধৈর্য অর্জন করুন।",
+          "অন্যের অনুভূতিকে খাটো করে কোনো রসিকতা করা থেকে নিজেকে বিরত রাখুন।"
+        ],
+        famous: [
+          { name: "টমাস আলভা এডিসন", role: "জগদ্বিখ্যাত উদ্ভাবক" },
+          { name: "বেঞ্জামিন ফ্র্যাঙ্কলিন", role: "বিজ্ঞানী ও রাষ্ট্রনায়ক" },
+          { name: "সক্রেটিস", role: "মহান প্রাচীন গ্রিক দার্শনিক" },
+          { name: "ক্যাপ্টেন জ্যাক স্প্যারো", role: "কাল্পনিক জলদস্যু চরিত্র" }
+        ]
+      },
+
+      ISFJ: {
+        title: "স্নেহশীল অভিভাবক ও বিশ্বস্ত রক্ষক (The Protector)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ১৩.৮% (অন্যতম জনপ্রিয় টাইপ)",
+        desc: [
+          "আপনি অত্যন্ত দায়িত্বশীল, মমতাময়ী এবং নিঃস্বার্থভাবে অন্যের যত্ন নিতে ভালোবাসেন। পরিবার, সমাজ ও কাজের জায়গায় শান্তি, সৌহার্দ্য ও স্থিতি বজায় রাখতে আপনার অবদান অতুলনীয়।",
+          "আপনি খুব নির্ভরযোগ্য একজন মানুষ; একবার কাউকে কোনো কথা দিলে নিজের ক্ষতি স্বীকার করেও সেই কথা রক্ষা করেন। অতীত ঐতিহ্য, পারিবারিক মূল্যবোধ এবং সুশৃঙ্খল রুটিন আপনাকে মানসিক নিরাপত্তা জোগায়।",
+          "আপনি নিজের কাজের ঢাকঢোল পেটাতে ভালোবাসেন না, বরং নীরবে নেপথ্যে থেকে দায়িত্ব পালন করে যান।"
+        ],
+        strengths: [
+          "পরম বিশ্বস্ততা, প্রখর কর্তব্যপরায়ণতা এবং যেকোনো দায়িত্বে অবিচল থাকা।",
+          "অন্যের সূক্ষ্ম আবেগ ও প্রয়োজনের প্রতি গভীর যত্নশীলতা ও সহমর্মিতা।",
+          "বাস্তবমুখী শৃঙ্খলা, চমৎকার স্মৃতিশক্তি ও গুছিয়ে কাজ করার অনন্য দক্ষতা।",
+          "পরিবার ও বন্ধুমহলে শান্তি ও স্থিতিশীলতা রক্ষা করার ঐকান্তিক চেষ্টা।"
+        ],
+        weaknesses: [
+          "অন্যদের জন্য নিজের সর্বস্ব দিয়ে দেওয়ার পর নিজের জন্য কিছুই অবশিষ্ট না রাখা।",
+          "নতুন কোনো বড় পরিবর্তন সহজে মানতে না পারা এবং পুরোনো অভ্যাসে আটকে থাকা।",
+          "অতিরিক্ত লাজুকতা এবং নিজের প্রাপ্য অধিকার বা প্রশংসা দাবি করতে দ্বিধাবোধ করা।",
+          "কোনো মতানৈক্য বা বিরোধে চরম মানসিক অস্বস্তিতে পড়া।"
+        ],
+        relationships: "আপনি যে মানুষটিকে ভালোবাসেন, তার সুখের জন্য যেকোনো ত্যাগ স্বীকার করতে পারেন। আপনার বন্ধুরা জানে যে বিপদের দিনে সবার আগে আপনিই তাদের পাশে এসে দাঁড়াবেন। আপনি সম্পর্কের মাঝে স্থায়ী নিরাপত্তা খোঁজেন।",
+        marriage: {
+          types: "ESFP এবং ESTP",
+          reason: "ESFP এবং ESTP-এর প্রাণবন্ত আনন্দ, উদ্যম ও সামাজিক প্রাণচাঞ্চল্য ISFJ-এর কিছুটা অন্তর্মুখী ও শৃঙ্খলিত জীবনে নির্মল হাসি ও রোমাঞ্চ নিয়ে আসে। বিপরীতে ISFJ-এর নির্ভরযোগ্যতা ও যত্নশীল স্বভাব তাদের জীবনে একটি নিরাপদ পারিবারিক আশ্রয় নিশ্চিত করে।"
+        },
+        career: {
+          desc: "যেখানে মানুষের সরাসরি সেবা করা যায়, সুশৃঙ্খল দায়িত্ব পালন করা যায় এবং শান্তিপূর্ণ কাজের পরিবেশ বিদ্যমান।",
+          roles: ["ডাক্তার / নার্সিং স্পেশালিস্ট", "প্রাথমিক শিক্ষক", "অফিস অ্যাডমিনিস্ট্রেটর", "সোশ্যাল ওয়ার্কার", "হিউম্যান রিসোর্স অফিসার"]
+        },
+        growth: [
+          "নিজের শারীরিক ও মানসিক সুস্থতার যত্ন নিন; নিজের জন্য কিছুটা সময় আলাদা করে রাখুন।",
+          "সব সময় সবাইকে সন্তুষ্ট করার চেষ্টা ছাড়ুন এবং আপনার সাথে করা অন্যায় আচরণের প্রতিবাদ করুন।",
+          "জীবনের অনিবার্য ইতিবাচক পরিবর্তনগুলোকে সানন্দে গ্রহণ করার সাহস সঞ্চয় করুন।"
+        ],
+        famous: [
+          { name: "মাদার তেরেসা", role: "শান্তিতে নোবেলজয়ী সেবাব্রতী" },
+          { name: "রানি দ্বিতীয় এলিজাবেথ", role: "দীর্ঘমেয়াদী ব্রিটিশ শাসক" },
+          { name: "বেগম রোকেয়া", role: "নারী জাগরণের অগ্রদূত" },
+          { name: "স্যামওয়াইজ গ্যামজি", role: "কাল্পনিক চরিত্র (লর্ড অব দ্য রিং)" }
+        ]
+      },
+
+      ISTJ: {
+        title: "বাস্তববাদী সংগঠক ও নীতিপরায়ণ কারিগর (The Logistician)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ১১.৬%",
+        desc: [
+          "আপনি একজন নীতিপরায়ণ, নিয়মানুবর্তী এবং অত্যন্ত দায়িত্বশীল মানুষ। কথা ও কাজে এক থাকা আপনার জীবনের মূল মূলমন্ত্র। আপনি প্রমাণ, বাস্তবতা ও নিয়মের ভিত্তিতে চলেন এবং সমাজে বিশৃঙ্খলার বদলে শৃঙ্খলা ফিরিয়ে আনেন।",
+          "আপনি অসার আবেগ বা অলীক কল্পনায় বিশ্বাসী নন। যা দৃশ্যমান, যা পরীক্ষিত এবং যার বাস্তব কার্যকারিতা রয়েছে—কেবল সেটির ওপরই আপনার পূর্ণ আস্থা।",
+          "যে প্রতিষ্ঠানে বা পরিবারে আপনি থাকেন, সেখানে সবাই আপনার ওপর চোখ বন্ধ করে নির্ভর করতে পারে, কারণ আপনি প্রতিশ্রুতি ভঙ্গ করেন না।"
+        ],
+        strengths: [
+          "অটল একাগ্রতা, কঠোর পরিশ্রমী মানসিকতা ও দায়িত্ববোধ।",
+          "পুঙ্খানুপুঙ্খ নিয়মশৃঙ্খলা রক্ষা ও নিখুঁতভাবে কাজ সম্পন্ন করার দক্ষতা।",
+          "ঠান্ডা মাথায় বাস্তব সিদ্ধান্ত গ্রহণ ও নিরপেক্ষ সত্যের মূল্যায়ন।",
+          "অনড় সততা ও নৈতিক মূল্যবোধের প্রতি অবিচল শ্রদ্ধা।"
+        ],
+        weaknesses: [
+          "অতিরিক্ত নিয়মের বেড়াজালে আটকে থেকে কোনো পরিবর্তনকে মেনে নিতে অনীহা।",
+          "অন্যের মানসিক আবেগকে তুচ্ছ ভেবে কিছুটা রুক্ষ বা নির্মম আচরণ করা।",
+          "সবকিছু ঠিক নিজের নিয়ম অনুযায়ী না হলে মারাত্মক বিরক্ত ও অসন্তুষ্ট হওয়া।",
+          "কাজে অতিরিক্ত ডুবে থেকে নিজের জীবনকে আনন্দহীন করে তোলা।"
+        ],
+        relationships: "আপনি অগভীর লোকদেখানো সম্পর্কে বিশ্বাসী নন। আপনার বন্ধুদের সংখ্যা সীমিত হলেও তাদের সাথে সম্পর্ক হয় আজীবনের। আপনি মুখে বড় বড় ভালোবাসার কথা না বললেও বিপদের দিনে কাজে সাহায্য করে ভালোবাসা প্রমাণ করেন।",
+        marriage: {
+          types: "ESFP এবং ESTP",
+          reason: "ESFP-এর উষ্ণ সামাজিকতা ও প্রাণখোলা হাসি ISTJ-এর রাশভারী জীবনে অনাবিল আনন্দ ছড়িয়ে দেয়। অন্যদিকে ESTP-এর বাস্তবমুখী কর্মতৎপরতা ISTJ-এর নিয়মতান্ত্রিক শৃঙ্খলার সাথে মিলে একটি অত্যন্ত ভারসাম্যপূর্ণ ও মজবুত দাম্পত্য গড়ে তোলে।"
+        },
+        career: {
+          desc: "যেখানে সুনির্দিষ্ট নিয়ম, কাঠামোগত কর্মপদ্ধতি, জবাবদিহিতা ও বাস্তব তথ্যের যথার্থ মূল্যায়ন রয়েছে।",
+          roles: ["অ্যাকাউন্ট্যান্ট / চার্টার্ড অডিটর", "সামরিক কর্মকর্তা / পুলিশ প্রশাসক", "বিচারক / ম্যাজিস্ট্রেট", "সফটওয়্যার কোয়ালিটি অ্যানালিস্ট", "ব্যাংক ম্যানেজার"]
+        },
+        growth: [
+          "সব পরিস্থিতিতে নিয়মই একমাত্র সত্য নয়, মানবিক দৃষ্টিকোণ থেকে পরিস্থিতি বিবেচনা করতে শিখুন।",
+          "জীবনের আনন্দ উপভোগ করতে কিছুটা অপ্রত্যাশিত মুহূর্ত ও ছুটিকে আলিঙ্গন করুন।",
+          "অন্যের ভুলগুলোকে ক্ষমাসুন্দর দৃষ্টিতে দেখে কিছুটা নমনীয় হওয়ার অভ্যাস করুন।"
+        ],
+        famous: [
+          { name: "জর্জ ওয়াশিংটন", role: "যুক্তরাষ্ট্রের প্রথম প্রেসিডেন্ট" },
+          { name: "ওয়ারেন বাফেট", role: "সফলতম বিনিয়োগকারী ও ধনকুবের" },
+          { name: "অঞ্জেলা মার্কেল", role: "জার্মানির সাবেক চ্যান্সেলর" },
+          { name: "নেড স্টার্ক", role: "কাল্পনিক চরিত্র (গেম অব থ্রোনস)" }
+        ]
+      },
+
+      ISFP: {
+        title: "সংবেদনশীল শিল্পী ও শান্তিপ্রিয় অভিযাত্রী (The Adventurer)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ৮.৮%",
+        desc: [
+          "আপনি একজন কোমল হৃদয়, শান্তিপ্রিয় এবং বর্তমান মুহূর্তে জীবনকে ভালোবাসতে জানা সৃষ্টিশীল মানুষ। আপনার ভেতরে এক অপূর্ব নান্দনিকতাবোধ ও শৈল্পিক দৃষ্টি কাজ করে। চারপাশের সুন্দর জিনিস, রূপ ও রস আপনি গভীরভাবে অনুভব করেন।",
+          "আপনি নিজের স্বাধীনতাকে পরম মূল্য দেন এবং কাউকে জোর করে নিয়ন্ত্রণ করতে চান না, নিজেও কারও নিয়ন্ত্রণে থাকতে পছন্দ করেন না। সমাজে নিজের মতো শান্তভাবে বাঁচাই আপনার পরম আনন্দ।",
+          "আপনার মনের গভীর ভাবগুলো অনেক সময় মুখের কথায় নয়, বরং আপনার পছন্দ, পোশাক, কাজ বা শিল্পের মাধ্যমে ফুটে ওঠে।"
+        ],
+        strengths: [
+          "অসাধারণ নান্দনিক সৃষ্টিশীলতা ও শৈল্পিক প্রকাশভঙ্গি।",
+          "শান্ত, অমায়িক ও সবার প্রতি গভীর সহনশীল মনোভাব।",
+          "বর্তমান মুহূর্তের সৌন্দর্যকে চমৎকারভাবে উপভোগ করার ক্ষমতা।",
+          "অন্যের ব্যক্তিগত সীমানাকে সম্মান জানানো ও উদার মানসিকতা।"
+        ],
+        weaknesses: [
+          "ভবিষ্যতের কোনো দীর্ঘমেয়াদী পরিকল্পনা বা আর্থিক শৃঙ্খলার প্রতি উদাসীন থাকা।",
+          "যেকোনো ধরনের মতবিরোধ বা সংঘাত দেখলে পালিয়ে যাওয়ার প্রবণতা।",
+          "সমালোচনায় অত্যন্ত দ্রুত আহত হওয়া এবং হতাশায় ডুবে যাওয়া।",
+          "নিজের ওপর আত্মবিশ্বাসের অভাব বোধ করা।"
+        ],
+        relationships: "আপনি এমন বন্ধু যিনি কখনো বিচারক হন না। আপনার সান্নিধ্যে এলে মানুষ পরম শান্তি ও স্বস্তি অনুভব করে। সম্পর্কে আপনি স্বাধীনতা ও আন্তরিক ভালোবাসার এক সুন্দর সংমিশ্রণ বজায় রাখেন।",
+        marriage: {
+          types: "ESFJ এবং ENFJ",
+          reason: "ESFJ-এর সুশৃঙ্খল সামাজিক নিরাপত্তা ও মমতাময়ী উপস্থিতি ISFP-এর কিছুটা এলোমেলো ও সংবেদনশীল জীবনকে একটি নিরাপদ আশ্রয় দেয়। আর ENFJ-এর অন্তর্দৃষ্টিময় ভালোবাসা ISFP-এর ভেতরের সৃষ্টিশীলতাকে পূর্ণতা দিয়ে গভীর দাম্পত্যের সূচনা করে।"
+        },
+        career: {
+          desc: "যেখানে বাঁধাধরা কড়াকড়ি নেই, নিজের স্বাধীনতা বজায় রেখে সৃজনশীল কাজ করা যায়।",
+          roles: ["গ্রাফিক ডিজাইনার / ফ্যাশন ডিজাইনার", "ফটোগ্রাফার / ভিজ্যুয়াল আর্টিস্ট", "শেফ / কালিনারি এক্সপার্ট", "মিউজিশিয়ান / সাউন্ড ডিজাইনার", "পশু চিকিৎসক / উদ্যানতত্ত্ববিদ"]
+        },
+        growth: [
+          "ভবিষ্যতের জন্য স্পষ্ট কিছু অর্থনৈতিক ও ক্যারিয়ার পরিকল্পনা গড়ে তুলুন।",
+          "মতানৈক্য হলে ভয় পেয়ে গুটিয়ে না গিয়ে নিজের বক্তব্য শান্তভাবে বুঝিয়ে বলুন।",
+          "আপনার ভেতরের অনন্য প্রতিভাকে অবমূল্যায়ন না করে তা বিশ্বের সামনে প্রকাশ করার সাহস করুন।"
+        ],
+        famous: [
+          { name: "মাইকেল জ্যাকসন", role: "পপ সঙ্গীতের কিংবদন্তি" },
+          { name: "ফ্রিদা কাহলো", role: "বিখ্যাত মেক্সিকান চিত্রশিল্পী" },
+          { name: "অড্রে হেপবার্ন", role: "কালজয়ী অভিনেত্রী ও মানবতাবাদী" },
+          { name: "হ্যারি পটার", role: "কাল্পনিক জাদুকর চরিত্র" }
+        ]
+      },
+
+      ISTP: {
+        title: "কুশলী কারিগর ও বাস্তববাদী সমাধানকারী (The Virtuoso)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ৫.৪%",
+        desc: [
+          "আপনি একজন শান্ত, পর্যবেক্ষণশীল এবং সরাসরি কাজে বিশ্বাসী ব্যবহারিক মানুষ। কোনো জটিল যন্ত্র, কোড বা সমস্যা দেখলে তা কীভাবে কাজ করে—তা নিজের হাতে খুলে পরীক্ষা করা আপনার স্বভাব।",
+          "সংকটের মুহূর্তে আপনি বিন্দুমাত্র বিচলিত না হয়ে একদম বরফের মতো ঠান্ডা মাথায় দ্রুততম সমাধান বের করতে পারেন। অপ্রয়োজনীয় নিয়ম বা দীর্ঘ তাত্ত্বিক আলাপ আপনার কাছে অর্থহীন।",
+          "আপনি চরম স্বাধীনচেতা এবং রোমাঞ্চ পছন্দ করেন। আপনি কম কথা বলেন, তবে যা বলেন তা নিখাদ বাস্তবতার ভিত্তিতে বলেন।"
+        ],
+        strengths: [
+          "সংকটের মুহূর্তে ঠান্ডা মাথায় নির্ভুল ও তাৎক্ষণিক সিদ্ধান্ত গ্রহণ।",
+          "যেকোনো টুলস, টেকনোলজি বা শারীরিক কাজে অসাধারণ ব্যবহারিক দক্ষতা।",
+          "যেকোনো পরিস্থিতির সাথে দ্রুত নিজেকে মানিয়ে নেওয়ার নমনীয়তা।",
+          "নিরপেক্ষ ও বাস্তববাদী যুক্তির মাধ্যমে সমস্যাকে সহজ করে ফেলা।"
+        ],
+        weaknesses: [
+          "নিজের আবেগ ও মানসিক অনুভূতি প্রকাশ করতে চরম অনীহা বা অস্বস্তি।",
+          "অতিরিক্ত ঝুঁকিপূর্ণ কাজে জড়িয়ে পড়া বা দ্রুত একঘেয়েমিতে ভোগা।",
+          "দীর্ঘমেয়াদী কোনো সামাজিক প্রতিশ্রুতি বা সম্পর্কে জড়াতে ভয় পাওয়া।",
+          "অন্যের সংবেদনশীল আবেগের প্রতি কিছুটা রূঢ় ও উদাসীন থাকা।"
+        ],
+        relationships: "আপনি এমন বন্ধু যার সাথে কোনো কথা না বলেও ঘণ্টার পর ঘণ্টা কাটানো যায়। আপনি বন্ধুদের সমস্যায় মুখে মিষ্টি কথা না বলে সরাসরি সমাধান নিয়ে হাজির হন। তবে জোর করে ব্যক্তিগত জীবনে হস্তক্ষেপ আপনি পছন্দ করেন না।",
+        marriage: {
+          types: "ESTJ এবং ESFJ",
+          reason: "ESTJ-এর সাংগঠনিক দক্ষতা ও সামাজিক উপস্থিতি ISTP-এর অন্তর্মুখী জীবনে স্থায়িত্ব এনে দেয়। অন্যদিকে ESFJ-এর অপরিসীম মমতা ও পারিবারিক দায়িত্ববোধ ISTP-এর আপাত কাঠখোট্টা জীবনের ভেতর ভালোবাসার এক পরম শীতল পরশ বুলিয়ে দেয়।"
+        },
+        career: {
+          desc: "যেখানে সরাসরি হাতে-কলমে কাজ করা যায়, তাৎক্ষণিক সমস্যা সমাধান করা যায় এবং কাজের পূর্ণ স্বাধীনতা থাকে।",
+          roles: ["মেকানিক্যাল / এরোস্পেস ইঞ্জিনিয়ার", "ফরেনসিক অ্যানালিস্ট", "পাইলট / ইমার্জেন্সি রেসপন্ডার", "সফটওয়্যার ডেভেলপার / সাইবার সিকিউরিটি স্পেশালিস্ট", "অ্যাথলেট"]
+        },
+        growth: [
+          "আপনার কাছের মানুষদের সাথে নিজের মনের অনুভূতিগুলো ভাগ করে নিন; মৌনতা অনেক সময় দূরত্ব বাড়ায়।",
+          "ঝুঁকি নেওয়ার আগে তার সুদূরপ্রসারী ফলাফল একটু শান্ত মাথায় ভেবে দেখুন।",
+          "দীর্ঘমেয়াদী সম্পর্কের প্রতিশ্রুতিকে কোনো বন্দিদশা না ভেবে জীবনের স্থায়িত্ব হিসেবে দেখুন।"
+        ],
+        famous: [
+          { name: "ক্লিন্ট ইস্টউড", role: "প্রখ্যাত হলিউড অভিনেতা ও পরিচালক" },
+          { name: "ব্রুস লি", role: "মার্শাল আর্ট কিংবদন্তি ও দার্শনিক" },
+          { name: "মাইকেল জর্ডান", role: "কিংবদন্তি বাস্কেটবল তারকা" },
+          { name: "জেমস বন্ড (০০৭)", role: "কাল্পনিক স্পাই চরিত্র" }
+        ]
+      },
+
+      ESFJ: {
+        title: "সহৃদয় সহায়ক ও সামাজিক বন্ধনকারী (The Consul)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ১২.৩%",
+        desc: [
+          "আপনি অত্যন্ত আন্তরিক, জনপ্রিয়, পরোপকারী এবং সমাজের মানুষকে এক সুতোয় বেঁধে রাখতে ভালোবাসেন। পরিবারের অনুষ্ঠান, বন্ধুদের মিলনমেলা বা যেকোনো সামাজিক আয়োজনের প্রাণ আপনি।",
+          "অন্যের প্রয়োজনকে নিজের চেয়ে বেশি প্রাধান্য দেওয়া আপনার স্বভাব। চারপাশের মানুষ সুখে আছে কিনা, ঠিকমতো খাচ্ছে কিনা—এসব নিয়ে আপনি সবসময় আন্তরিকভাবে ভাবেন।",
+          "আপনি শৃঙ্খলা, পারস্পরিক শ্রদ্ধা ও সামাজিক মূল্যবোধে বিশ্বাসী। কোনো বিরোধ বা বিবাদ দেখলে তা মীমাংসা করে সবার মুখে হাসি ফোটানোই আপনার পরম ব্রত।"
+        ],
+        strengths: [
+          "অসাধারণ সামাজিক মেলামেশা ও সবাইকে আপন করে নেওয়ার জাদুকরী ক্ষমতা।",
+          "প্রগাঢ় দায়িত্বশীলতা, বিশ্বস্ততা ও পরোপকারী মমতাময়ী হৃদয়।",
+          "যেকোনো দলগত অনুষ্ঠান নিখুঁতভাবে পরিচালনা ও সমন্বয় করার দক্ষতা।",
+          "কাছের মানুষের নিরাপত্তা ও শান্তির জন্য অক্লান্ত পরিশ্রম করা।"
+        ],
+        weaknesses: [
+          "অন্যরা আপনার সম্পর্কে কী ভাবছে তা নিয়ে অতিমাত্রায় চিন্তিত থাকা।",
+          "সমালোচনাকে অত্যন্ত গভীরভাবে নিয়ে নিজেকে ব্যর্থ মনে করা।",
+          "নিজের ভালো লাগা বা ইচ্ছাকে বিসর্জন দিয়ে সবাইকে খুশি করার চেষ্টা।",
+          "কোনো পরিবর্তন বা ভিন্নধর্মী জীবনধারাকে সহজে মেনে নিতে না পারা।"
+        ],
+        relationships: "আপনি বন্ধুদের জন্মদিনের কথা কখনো ভোলেন না এবং তাদের সুখে-দুঃখে ছায়ার মতো পাশে থাকেন। আপনার আতিথেয়তা সবার মনে দাগ কাটে। আপনি এমন সম্পর্ক চান যেখানে পারস্পরিক শ্রদ্ধা ও কৃতজ্ঞতা থাকবে।",
+        marriage: {
+          types: "ISFP এবং ISTP",
+          reason: "ISFP-এর শান্ত, মিষ্টি ও শৈল্পিক মন ESFJ-এর আন্তরিক ভালোবাসাকে পরিপূর্ণভাবে মূল্যায়ন করে। আবার ISTP-এর ব্যবহারিক জ্ঞান ও শান্ত স্বভাব ESFJ-এর অতিরিক্ত মানসিক উদ্বেগকে প্রশমিত করে এক চমৎকার ও নির্ভরতাভরা পারিবারিক জীবন উপহার দেয়।"
+        },
+        career: {
+          desc: "যেখানে সরাসরি মানুষের সেবা করা যায়, দল পরিচালনা করা যায় এবং সৌহার্দ্যপূর্ণ প্রাতিষ্ঠানিক পরিবেশ রয়েছে।",
+          roles: ["পাবলিক রিলেশন্স ম্যানেজার", "স্কুল প্রিন্সিপাল / শিক্ষক", "কাস্টমার এক্সপেরিয়েন্স হেড", "ইভেন্ট ডিরেক্টর", "স্বাস্থ্যসেবা প্রশাসক"]
+        },
+        growth: [
+          "সবাইকে সন্তুষ্ট করার চেষ্টা ছাড়ুন; নিজেকে ভালোবাসুন এবং নিজের জন্য সময় রাখুন।",
+          "অন্যের ব্যক্তিগত সিদ্ধান্তে সবসময় হস্তক্ষেপ না করে তাদের নিজেদের মতো সমাধান খুঁজতে দিন।",
+          "সমালোচনাকে ইতিবাচকভাবে গ্রহণ করে নিজের মানোন্নয়নে কাজে লাগান।"
+        ],
+        famous: [
+          { name: "টেলর সুইফট", role: "বিশ্বখ্যাত গায়িকা ও গীতিকার" },
+          { name: "বিল ক্লিনটন", role: "যুক্তরাষ্ট্রের সাবেক প্রেসিডেন্ট" },
+          { name: "জেনিফার লোপেজ", role: "পপস্টার ও অভিনেত্রী" },
+          { name: "মনিকা গেলার", role: "কাল্পনিক চরিত্র (ফ্রেন্ডস টিভি সিরিজ)" }
+        ]
+      },
+
+      ESTJ: {
+        title: "দক্ষ পরিচালক ও বলিষ্ঠ সুশৃঙ্খল নেতা (The Executive)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ৮.৭%",
+        desc: [
+          "আপনি শৃঙ্খলা, কঠোর পরিশ্রম ও ন্যায়ের মূর্ত প্রতীক। কোনো প্রতিষ্ঠান বা পরিবারকে কীভাবে নিয়মমাফিক, সুশৃঙ্খল ও উৎপাদনশীল রাখতে হয়—তা আপনার চেয়ে ভালো কেউ জানে না।",
+          "আপনি অস্পষ্টতা বা দায়িত্বজ্ঞানহীনতাকে একদম সহ্য করতে পারেন না। যা সঠিক, যা প্রতিষ্ঠিত নিয়ম—তা সবাইকে দিয়ে বাস্তবায়ন করিয়ে নেওয়াই আপনার নেতৃত্বশৈলী।",
+          "আপনার মুখের ভাষা সোজাসাপ্টা ও স্পষ্ট। মানুষ জানে যে আপনি কোনো লুকোছাপা করেন না এবং সংকটের দিনে দৃঢ় হাতে হাল ধরে সবাইকে সঠিক গন্তব্যে পৌঁছে দেন।"
+        ],
+        strengths: [
+          "অসাধারণ সাংগঠনিক নেতৃত্ব ও জটিল প্রক্রিয়া সুশৃঙ্খলভাবে পরিচালনার ক্ষমতা।",
+          "অবিচল নিষ্ঠা, বিশ্বস্ততা ও যেকোনো মূল্যে দায়িত্ব শেষ করার সংকল্প।",
+          "স্পষ্টবাদিতা, সততা এবং পক্ষপাতহীন ন্যায়ের শাসন বজায় রাখা।",
+          "বাস্তব পরিস্থিতি বিশ্লেষণ করে দ্রুত কার্যকর পথ বেছে নেওয়া।"
+        ],
+        weaknesses: [
+          "অন্যের অনুভূতি বা দুর্বলতার প্রতি কিছুটা কঠোর ও অনমনীয় আচরণ করা।",
+          "সবকিছুকে কেবল নিয়ম ও ঐতিহ্যের ফ্রেমে দেখার কারণে নতুন উদ্ভাবনে বাধা দেওয়া।",
+          "নিজের কাজের বাইরে অন্যের মতামতকে গুরুত্ব দিতে কিছুটা অনীহা।",
+          "কাজের জায়গায় বিশ্রাম না নিয়ে নিজেকে ও অন্যদের অতিরিক্ত চাপে রাখা।"
+        ],
+        relationships: "আপনি এমন বন্ধু যে কথার চেয়ে কাজের মাধ্যমে পাশে থাকে। বন্ধুদের যেকোনো প্রাতিষ্ঠানিক ঝামেলা, ক্যারিয়ার সংকট বা পারিবারিক জটিলতায় আপনি সরাসরি মাঠে নেমে সমাধান করে দেন।",
+        marriage: {
+          types: "ISFP এবং ISTP",
+          reason: "ISFP-এর নমনীয় কোমলতা ও সংবেদনশীলতা ESTJ-এর কর্তৃত্বপরায়ণ স্বভাবকে নরম করে তোলে এবং দাম্পত্যে শান্তি এনে দেয়। অন্যদিকে ISTP-এর ব্যবহারিক দক্ষতা ও নির্লিপ্ত বুদ্ধিমত্তা ESTJ-এর সুশৃঙ্খল মানসিকতার সাথে দারুণ সামঞ্জস্য তৈরি করে।"
+        },
+        career: {
+          desc: "যেখানে সুস্পষ্ট দায়িত্ব, শৃঙ্খলা প্রতিষ্ঠা, নিয়ম বাস্তবায়ন এবং প্রাতিষ্ঠানিক কর্তৃত্ব বজায় রাখার সুযোগ রয়েছে।",
+          roles: ["সামরিক / পুলিশ প্রধান", "বিচারপতি / প্রধান আইনজীবী", "চীফ অপারেটিং অফিসার (COO)", "ব্যাংক অডিটর / ফাইন্যান্স ডিরেক্টর", "প্রকল্প ব্যবস্থাপক"]
+        },
+        growth: [
+          "সবার কাজের গতি আপনার মতো দ্রুত বা নিখুঁত নাও হতে পারে; একটু সহনশীল হতে শিখুন।",
+          "অন্যের মতামতের প্রতি কান দিন এবং তাদের সৃজনশীল ভিন্নতাকে সুযোগ দিন।",
+          "পারিবারিক সম্পর্কের ক্ষেত্রে নিয়মের চেয়ে ভালোবাসাকে বেশি গুরুত্ব দিন।"
+        ],
+        famous: [
+          { name: "জন ডি রকফেলার", role: "শিল্পপতি ও দানবীর" },
+          { name: "ফ্রাঙ্ক সিনাত্রা", role: "কিংবদন্তি মার্কিন সংগীতশিল্পী" },
+          { name: "হেনরি ফোর্ড", role: "ফোর্ড মোটর্স-এর প্রতিষ্ঠাতা" },
+          { name: "হারমায়োনি গ্রেঞ্জার", role: "কাল্পনিক চরিত্র (হ্যারি পটার)" }
+        ]
+      },
+
+      ESFP: {
+        title: "প্রাণচঞ্চল বিনোদনদাতা ও জীবনপ্রেমী (The Entertainer)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ৮.৫%",
+        desc: [
+          "আপনি যেখানেই যান, সেখানেই আলো ও আনন্দ ছড়িয়ে দেন। আপনি বর্তমান মুহূর্তের প্রতিটি সেকেন্ড উপভোগ করতে ভালোবাসেন এবং আপনার চারপাশের মানুষদের মুখে হাসি ফোটানোই আপনার সহজাত গুণ।",
+          "আপনার সেন্স অব হিউমার ও ফ্যাশন সচেতনতা অসাধারণ। আপনি কোনো তাত্ত্বিক বিতর্ক বা বাঁধাধরা নিয়মের শেকলে বন্দি থাকতে ভালোবাসেন না। আপনার জীবনটাই যেন এক রঙিন মঞ্চ।",
+          "বাইরে থেকে আপনাকে কেবল আড্ডাপ্রেমী মনে হলেও আপনি মনের দিক থেকে অত্যন্ত উদার এবং অন্যের দুঃখে সহজেই আপনার মন গলে যায়।"
+        ],
+        strengths: [
+          "উজ্জ্বল প্রাণচাঞ্চল্য, আকর্ষণীয় ব্যক্তিত্ব ও চমৎকার রসবোধ।",
+          "মানুষের সাথে দ্রুত আত্মিক যোগাযোগ তৈরি ও সবাইকে মাতিয়ে রাখার ক্ষমতা।",
+          "ব্যবহারিক ও বর্তমান বাস্তবতাকে হাসিমুখে গ্রহণ করার অসাধারণ গুণ।",
+          "উদার হৃদয় ও যেকোনো মানুষের আনন্দে অংশীদার হওয়া।"
+        ],
+        weaknesses: [
+          "ভবিষ্যতের কোনো দীর্ঘমেয়াদী পরিকল্পনা বা আর্থিক সঞ্চয়ের প্রতি চরম উদাসীনতা।",
+          "কঠিন বা অপ্রীতিকর পরিস্থিতি দেখলে দায়িত্ব এড়িয়ে যাওয়ার প্রবণতা।",
+          "অতিরিক্ত আবেগপ্রবণ হয়ে হঠাৎ কোনো ঝুঁকিপূর্ণ সিদ্ধান্ত গ্রহণ।",
+          "একটানা বসে গভীর কোনো তাত্ত্বিক পড়ালেখা বা কাজে মনোযোগের অভাব।"
+        ],
+        relationships: "আপনি মানুষের জীবনে এক দমকা সতেজ হাওয়া। আপনার বন্ধুদের কখনোই মন খারাপ করে বসে থাকতে হয় না, কারণ আপনি তাদের টেনে নিয়ে গিয়ে আনন্দে ভাসিয়ে দেন। সম্পর্কে আপনি উষ্ণতা ও প্রাণবন্ত ভালোবাসা খোঁজেন।",
+        marriage: {
+          types: "ISFJ এবং ISTJ",
+          reason: "ISFJ এবং ISTJ-এর ধীরস্থির স্বভাব, নির্ভরযোগ্য শৃঙ্খলা ও দায়িত্বশীলতা ESFP-এর উচ্ছল ও কিছুটা দায়িত্বহীন জীবনে পরম নিরাপত্তার স্তম্ভ গড়ে তোলে। তাদের এই স্থিতিশীলতা ESFP-কে বাস্তব জীবনের মাটির সাথে যুক্ত রাখে।"
+        },
+        career: {
+          desc: "যেখানে সরাসরি মানুষের সাথে মেলামেশা, পারফর্ম করা, আনন্দ সৃষ্টি এবং উন্মুক্ত পরিবেশ রয়েছে।",
+          roles: ["অভিনেতা / এন্টারটেইনার", "ট্যুর গাইড / ট্রাভেল হোস্ট", "ইভেন্ট অর্গানাইজার", "জনসংযোগ কর্মকর্তা", "ফিটনেস ট্রেইনার / স্পোর্টস কোচ"]
+        },
+        growth: [
+          "আজকের আনন্দের পাশাপাশি আগামীকালের আর্থিক ও ক্যারিয়ার সুরক্ষার দিকে নজর দিন।",
+          "সমস্যা দেখলে পালিয়ে না গিয়ে দায়িত্ব নিয়ে তা সমাধান করার মানসিকতা গড়ে তুলুন।",
+          "একান্তে একা বসে নিজের জীবনের গভীর উদ্দেশ্য ও লক্ষ্য নিয়ে মাঝে মাঝে চিন্তা করুন।"
+        ],
+        famous: [
+          { name: "এলভিস প্রিসলি", role: "কিং অব রক অ্যান্ড রোল" },
+          { name: "মেরিলিন মনরো", role: "বিশ্বখ্যাত হলিউড অভিনেত্রী" },
+          { name: "উইল স্মিথ", role: "হলিউড সুপারস্টার ও র‍্যাপার" },
+          { name: "রন উইজলি", role: "কাল্পনিক চরিত্র (হ্যারি পটার)" }
+        ]
+      },
+
+      ESTP: {
+        title: "উদ্যমী অভিযানপ্রিয় ও সাহসী রূপকার (The Entrepreneur)",
+        pop: "বিশ্বে উপস্থিতি: আনুমানিক ৪.৩%",
+        desc: [
+          "আপনি তাৎক্ষণিক অ্যাকশনে বিশ্বাসী, নির্ভীক এবং রোমাঞ্চপ্রিয় একজন মানুষ। দীর্ঘ বক্তৃতা বা অলীক পরিকল্পনায় সময় নষ্ট না করে আপনি সরাসরি মাঠে নেমে কাজ শুরু করে দিতে ভালোবাসেন।",
+          "যেকোনো জরুরি অবস্থা বা সংকটে আপনার মস্তিষ্কের কার্যক্ষমতা বেড়ে যায়। আপনি পরিবেশের সূক্ষ্ম পরিবর্তন খেয়াল করেন এবং দ্রুততম সময়ে সুযোগের সদ্ব্যবহার করেন।",
+          "আপনার জীবনযাপন সামাজিক, গতিশীল ও আকর্ষণীয়। নিয়মের ভয় দেখিয়ে আপনাকে কখনো বেঁধে রাখা যায় না।"
+        ],
+        strengths: [
+          "অদম্য সাহস, তাৎক্ষণিক প্রত্যুৎপন্নমতিত্ব ও দ্রুত সংকট মোচনের ক্ষমতা।",
+          "বাস্তববাদী পর্যবেক্ষণ ক্ষমতা ও মানুষের মতিগতি চটজলদি বুঝে ফেলা।",
+          "চমৎকার সামাজিক বাগ্মিতা, আকর্ষণীয় স্টাইল ও প্রভাব বিস্তারের দক্ষতা।",
+          "যেকোনো নতুন পরিবর্তনের সাথে ভয়ডরহীনভাবে মানিয়ে নেওয়া।"
+        ],
+        weaknesses: [
+          "ভবিষ্যতের পরিণতির কথা না ভেবে তাৎক্ষণিক উত্তেজনায় হঠকারী সিদ্ধান্ত নেওয়া।",
+          "প্রতিষ্ঠিত নিয়ম ও শৃঙ্খলার প্রতি তীব্র অসহিষ্ণুতা প্রকাশ করা।",
+          "অন্যের মানসিক সূক্ষ্ম আবেগের প্রতি ধৈর্য হারিয়ে কিছুটা অবহেলা করা।",
+          "দীর্ঘমেয়াদী কোনো লক্ষ্য বা বাঁধাধরা দায়িত্বে দ্রুত একঘেয়েমিতে ভোগা।"
+        ],
+        relationships: "আপনি সেই বন্ধু যার সাথে যেকোনো রোমাঞ্চকর অ্যাডভেঞ্চারে যাওয়া যায়। আপনি জীবনে আনন্দ নিয়ে আসেন এবং যেকোনো জমায়েতকে জীবন্ত করে তোলেন। তবে নাটকীয় আবেগ আপনি এড়িয়ে চলেন।",
+        marriage: {
+          types: "ISFJ এবং ISTJ",
+          reason: "ISFJ-এর নিঃস্বার্থ মমতা ও ISTJ-এর নির্ভরযোগ্য বাস্তবতা ESTP-এর ছন্নছাড়া রোমাঞ্চপ্রিয় স্বভাবকে পরম নির্ভরতা ও ভারসাম্য দেয়। তারা ESTP-এর শক্তির সঠিক মূল্যায়ন করে দাম্পত্যে শান্তি নিশ্চিত করে।"
+        },
+        career: {
+          desc: "যেখানে তাৎক্ষণিক অ্যাকশন, বুদ্ধিমত্তা, ঝুঁকি গ্রহণ এবং গতিশীল পরিবেশ রয়েছে।",
+          roles: ["উদ্যোক্তা / ইনভেস্টর", "ইমার্জেন্সি ট্রমা সার্জন", "স্টক ট্রেডার", "পাইলট / ডিফেন্স অফিসার", "মার্কেটিং ও সেলস ডিরেক্টর"]
+        },
+        growth: [
+          "যেকোনো বড় ঝুঁকি নেওয়ার আগে থামুন এবং এর সুদূরপ্রসারী ক্ষতি ও লাভ ভেবে দেখুন।",
+          "কাছের মানুষের অনুভূতির প্রতি একটু সময় দিন এবং তাদের মনের কথা শুনুন।",
+          "সব কাজে শুধু রোমাঞ্চ না খুঁজে জীবনের ধারাবাহিকতা ও শৃঙ্খলার মূল্য দিতে শিখুন।"
+        ],
+        famous: [
+          { name: "উইনস্টন চার্চিল", role: "ব্রিটিশ সমরনায়ক ও প্রধানমন্ত্রী" },
+          { name: "ম্যাডোনা", role: "পপ মিউজিক কুইন" },
+          { name: "ডোনাল্ড ট্রাম্প", role: "ব্যবসায়ী ও সাবেক মার্কিন প্রেসিডেন্ট" },
+          { name: "জেইমি ল্যানিস্টার", role: "কাল্পনিক চরিত্র (গেম অব থ্রোনস)" }
+        ]
+      }
+    };
+
+    // ============================================================
+    // স্টেট ও পেজিনেশন লজিক (Quiz State Management)
+    // ============================================================
+    let currentPage = 0;
+    const QUESTIONS_PER_PAGE = 5;
+    const totalPages = Math.ceil(questions.length / QUESTIONS_PER_PAGE); // 12 pages
+    const userAnswers = {}; // stores { [questionId]: 'A' | 'B' }
+    let calculatedProfile = null;
+    let calculatedPercentages = {};
+
+    function startQuiz() {
+      document.getElementById('welcome-screen').classList.add('hidden');
+      document.getElementById('quiz-screen').classList.remove('hidden');
+      currentPage = 0;
+      renderCurrentPage();
+      document.querySelector('main, .max-w-3xl').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function renderCurrentPage() {
+      const container = document.getElementById('questions-container');
+      container.innerHTML = '';
+
+      const startIndex = currentPage * QUESTIONS_PER_PAGE;
+      const endIndex = Math.min(startIndex + QUESTIONS_PER_PAGE, questions.length);
+      const currentQuestions = questions.slice(startIndex, endIndex);
+
+      // Render 5 questions
+      currentQuestions.forEach((q, index) => {
+        const questionNumber = startIndex + index + 1;
+        const selectedChoice = userAnswers[q.id];
+
+        const card = document.createElement('div');
+        card.id = `q-card-${q.id}`;
+        card.className = "bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/80 shadow-xs transition-all";
+
+        card.innerHTML = `
+          <div class="flex items-start gap-3 mb-4">
+            <span class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-700 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5 border border-indigo-100">
+              ${toBengaliNumber(questionNumber)}
+            </span>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+              ${q.scenario}
+            </h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-0 sm:pl-10">
+            <!-- Option A Card -->
+            <div 
+              onclick="selectOption(${q.id}, 'A')" 
+              id="opt-${q.id}-A"
+              class="cursor-pointer p-4 rounded-xl border-2 transition-all flex items-start gap-3 ${
+                selectedChoice === 'A' 
+                  ? 'border-indigo-600 bg-indigo-50/60 shadow-sm' 
+                  : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50/70'
+              }"
+            >
+              <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                selectedChoice === 'A' ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-300'
+              }">
+                ${selectedChoice === 'A' ? '<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>' : ''}
+              </div>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                ${q.optA}
+              </p>
+            </div>
+
+            <!-- Option B Card -->
+            <div 
+              onclick="selectOption(${q.id}, 'B')" 
+              id="opt-${q.id}-B"
+              class="cursor-pointer p-4 rounded-xl border-2 transition-all flex items-start gap-3 ${
+                selectedChoice === 'B' 
+                  ? 'border-indigo-600 bg-indigo-50/60 shadow-sm' 
+                  : 'border-slate-200 hover:border-indigo-300 hover:bg-slate-50/70'
+              }"
+            >
+              <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                selectedChoice === 'B' ? 'border-indigo-600 bg-indigo-600 text-white' : 'border-slate-300'
+              }">
+                ${selectedChoice === 'B' ? '<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>' : ''}
+              </div>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                ${q.optB}
+              </p>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      updateProgressIndicators();
+    }
+
+    function selectOption(questionId, choice) {
+      userAnswers[questionId] = choice;
+
+      // Update styling of Option A
+      const cardA = document.getElementById(`opt-${questionId}-A`);
+      const cardB = document.getElementById(`opt-${questionId}-B`);
+
+      if (choice === 'A') {
+        cardA.className = "cursor-pointer p-4 rounded-xl border-2 transition-all flex items-start gap-3 border-indigo-600 bg-indigo-50/60 shadow-sm";
+        cardA.querySelector('div').className = "w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 border-indigo-600 bg-indigo-600 text-white";
+        cardA.querySelector('div').innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+
+        cardB.className = "cursor-pointer p-4 rounded-xl border-2 transition-all flex items-start gap-3 border-slate-200 hover:border-indigo-300 hover:bg-slate-50/70";
+        cardB.querySelector('div').className = "w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 border-slate-300";
+        cardB.querySelector('div').innerHTML = '';
+      } else {
+        cardB.className = "cursor-pointer p-4 rounded-xl border-2 transition-all flex items-start gap-3 border-indigo-600 bg-indigo-50/60 shadow-sm";
+        cardB.querySelector('div').className = "w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 border-indigo-600 bg-indigo-600 text-white";
+        cardB.querySelector('div').innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+
+        cardA.className = "cursor-pointer p-4 rounded-xl border-2 transition-all flex items-start gap-3 border-slate-200 hover:border-indigo-300 hover:bg-slate-50/70";
+        cardA.querySelector('div').className = "w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 border-slate-300";
+        cardA.querySelector('div').innerHTML = '';
+      }
+
+      // Remove any missing highlight
+      const qCard = document.getElementById(`q-card-${questionId}`);
+      if (qCard) qCard.classList.remove('ring-2', 'ring-rose-400');
+
+      updateProgressIndicators();
+    }
+
+    function updateProgressIndicators() {
+      // Progress bar and numbers
+      const totalQuestions = questions.length;
+      const answeredCount = Object.keys(userAnswers).length;
+      const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
+
+      document.getElementById('page-indicator').textContent = `পৃষ্ঠা ${toBengaliNumber(currentPage + 1)} / ${toBengaliNumber(totalPages)}`;
+      document.getElementById('answered-indicator').textContent = `${toBengaliNumber(progressPercent)}% সম্পন্ন (${toBengaliNumber(answeredCount)}/${toBengaliNumber(totalQuestions)})`;
+      document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+
+      // Previous button state
+      const prevBtn = document.getElementById('prev-btn');
+      prevBtn.disabled = currentPage === 0;
+
+      // Next button text
+      const nextBtnText = document.getElementById('next-btn-text');
+      if (currentPage === totalPages - 1) {
+        nextBtnText.textContent = "ফলাফল দেখুন";
+      } else {
+        nextBtnText.textContent = "পরের পৃষ্ঠা";
+      }
+    }
+
+    function nextPage() {
+      // Validate current 5 questions
+      const startIndex = currentPage * QUESTIONS_PER_PAGE;
+      const endIndex = Math.min(startIndex + QUESTIONS_PER_PAGE, questions.length);
+      const currentQuestions = questions.slice(startIndex, endIndex);
+
+      let firstUnansweredId = null;
+      for (const q of currentQuestions) {
+        if (!userAnswers[q.id]) {
+          firstUnansweredId = q.id;
+          break;
+        }
+      }
+
+      if (firstUnansweredId !== null) {
+        const qCard = document.getElementById(`q-card-${firstUnansweredId}`);
+        if (qCard) {
+          qCard.classList.add('ring-2', 'ring-rose-400');
+          qCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      if (currentPage < totalPages - 1) {
+        currentPage++;
+        renderCurrentPage();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        // All done!
+        calculateAndDisplayResult();
+      }
+    }
+
+    function previousPage() {
+      if (currentPage > 0) {
+        currentPage--;
+        renderCurrentPage();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // ============================================================
+    // ফলাফল গণনা ও রেন্ডারিং (Calculation & Rendering)
+    // ============================================================
+    function calculateAndDisplayResult() {
+      const counts = {
+        E: 0, I: 0,
+        S: 0, N: 0,
+        T: 0, F: 0,
+        J: 0, P: 0
+      };
+
+      questions.forEach(q => {
+        const choice = userAnswers[q.id];
+        if (choice === 'A') counts[q.typeA]++;
+        else if (choice === 'B') counts[q.typeB]++;
+      });
+
+      // 15 questions per dimension
+      const ePct = Math.round((counts.E / 15) * 100);
+      const iPct = 100 - ePct;
+
+      const sPct = Math.round((counts.S / 15) * 100);
+      const nPct = 100 - sPct;
+
+      const tPct = Math.round((counts.T / 15) * 100);
+      const fPct = 100 - tPct;
+
+      const jPct = Math.round((counts.J / 15) * 100);
+      const pPct = 100 - jPct;
+
+      const type1 = counts.I >= counts.E ? 'I' : 'E';
+      const type2 = counts.N >= counts.S ? 'N' : 'S';
+      const type3 = counts.F >= counts.T ? 'F' : 'T';
+      const type4 = counts.J >= counts.P ? 'J' : 'P';
+
+      const finalType = `${type1}${type2}${type3}${type4}`;
+      const profile = personalityProfiles[finalType] || personalityProfiles.INFJ;
+
+      calculatedProfile = { code: finalType, ...profile };
+      calculatedPercentages = {
+        iPct, ePct,
+        nPct, sPct,
+        tPct, fPct,
+        jPct, pPct
+      };
+
+      // Hide quiz screen, show result
+      document.getElementById('quiz-screen').classList.add('hidden');
+      const resultScreen = document.getElementById('result-screen');
+      resultScreen.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Render Section 1
+      document.getElementById('result-type').textContent = finalType;
+      document.getElementById('result-title').textContent = profile.title;
+      
+      const descBox = document.getElementById('result-desc');
+      descBox.innerHTML = profile.desc.map(p => `<p>${p}</p>`).join('');
+
+      // Render Section 2: Progress Bars
+      document.getElementById('mind-left-label').textContent = `অন্তর্মুখী (${toBengaliNumber(iPct)}%)`;
+      document.getElementById('mind-right-label').textContent = `বহির্মুখী (${toBengaliNumber(ePct)}%)`;
+      document.getElementById('bar-mind-left').style.width = `${iPct}%`;
+      document.getElementById('bar-mind-right').style.width = `${ePct}%`;
+      document.getElementById('mind-left-val').textContent = `${toBengaliNumber(iPct)}%`;
+      document.getElementById('mind-right-val').textContent = `${toBengaliNumber(ePct)}%`;
+
+      document.getElementById('energy-left-label').textContent = `স্বজ্ঞাত / দূরদর্শী (${toBengaliNumber(nPct)}%)`;
+      document.getElementById('energy-right-label').textContent = `বাস্তবধর্মী (${toBengaliNumber(sPct)}%)`;
+      document.getElementById('bar-energy-left').style.width = `${nPct}%`;
+      document.getElementById('bar-energy-right').style.width = `${sPct}%`;
+      document.getElementById('energy-left-val').textContent = `${toBengaliNumber(nPct)}%`;
+      document.getElementById('energy-right-val').textContent = `${toBengaliNumber(sPct)}%`;
+
+      document.getElementById('nature-left-label').textContent = `যৌক্তিক বিচার (${toBengaliNumber(tPct)}%)`;
+      document.getElementById('nature-right-label').textContent = `অনুভূতিপ্রবণ (${toBengaliNumber(fPct)}%)`;
+      document.getElementById('bar-nature-left').style.width = `${tPct}%`;
+      document.getElementById('bar-nature-right').style.width = `${fPct}%`;
+      document.getElementById('nature-left-val').textContent = `${toBengaliNumber(tPct)}%`;
+      document.getElementById('nature-right-val').textContent = `${toBengaliNumber(fPct)}%`;
+
+      document.getElementById('tactics-left-label').textContent = `সুপরিকল্পিত (${toBengaliNumber(jPct)}%)`;
+      document.getElementById('tactics-right-label').textContent = `নমনীয় (${toBengaliNumber(pPct)}%)`;
+      document.getElementById('bar-tactics-left').style.width = `${jPct}%`;
+      document.getElementById('bar-tactics-right').style.width = `${pPct}%`;
+      document.getElementById('tactics-left-val').textContent = `${toBengaliNumber(jPct)}%`;
+      document.getElementById('tactics-right-val').textContent = `${toBengaliNumber(pPct)}%`;
+
+      // Render Section 3: Tabs & Details
+      document.getElementById('population-stat').textContent = profile.pop;
+
+      document.getElementById('strengths-list').innerHTML = profile.strengths.map(s => `<li>${s}</li>`).join('');
+      document.getElementById('weaknesses-list').innerHTML = profile.weaknesses.map(w => `<li>${w}</li>`).join('');
+      document.getElementById('relationships-desc').textContent = profile.relationships;
+
+      document.getElementById('marriage-content').innerHTML = `
+        <div class="p-3 bg-white/80 rounded-xl border border-pink-100">
+          <strong class="text-pink-900 block mb-1">সেরা দাম্পত্য মেলবন্ধন:</strong>
+          <span class="inline-block px-3 py-1 bg-pink-100 text-pink-800 rounded-lg font-bold text-sm">
+            ${profile.marriage.types}
+          </span>
+        </div>
+        <p class="text-slate-700 leading-relaxed pt-2">
+          <strong>উপযুক্ত হওয়ার কারণ:</strong> ${profile.marriage.reason}
+        </p>
+      `;
+
+      document.getElementById('career-desc').textContent = profile.career.desc;
+      document.getElementById('career-roles').innerHTML = profile.career.roles.map(r => `
+        <span class="px-3 py-1.5 rounded-lg bg-white border border-amber-200 text-xs sm:text-sm font-semibold text-amber-900 shadow-2xs">
+          ${r}
+        </span>
+      `).join('');
+
+      document.getElementById('growth-tips').innerHTML = profile.growth.map(g => `<li>${g}</li>`).join('');
+
+      // Render Section 4: Famous People Grid
+      document.getElementById('famous-grid').innerHTML = profile.famous.map(item => `
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/70 text-center flex flex-col items-center justify-center">
+          <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 font-black text-sm flex items-center justify-center mb-2">
+            ${item.name.charAt(0)}
+          </div>
+          <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-tight mb-1">${item.name}</h4>
+          <span class="text-xs text-slate-500 font-medium">${item.role}</span>
+        </div>
+      `).join('');
+
+      switchTab('strengths');
+    }
+
+    // Tab Switching Logic
+    function switchTab(tabId) {
+      const tabs = ['strengths', 'relationships', 'marriage', 'career', 'growth'];
+      tabs.forEach(t => {
+        const content = document.getElementById(`tab-${t}`);
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === tabId) {
+          content.classList.remove('hidden');
+          btn.className = "px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-indigo-600 text-white shadow-sm";
+        } else {
+          content.classList.add('hidden');
+          btn.className = "px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-100 text-slate-600 hover:bg-slate-200";
+        }
+      });
+    }
+
+    // ============================================================
+    // ডাউনলোড ও এক্সপোর্ট সিস্টেম (Text, PDF, Photo)
+    // ============================================================
+    function toggleDownloadMenu() {
+      const menu = document.getElementById('download-dropdown');
+      menu.classList.toggle('hidden');
+    }
+
+    // Close dropdown when clicked outside
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('download-dropdown');
+      const btn = e.target.closest('button[onclick="toggleDownloadMenu()"]');
+      if (!btn && menu && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    // 1. Text (.txt) Download
+    function downloadAsText() {
+      toggleDownloadMenu();
+      if (!calculatedProfile) return;
+
+      const p = calculatedProfile;
+      const pct = calculatedPercentages;
+
+      const textContent = `=====================================================
+আপনার ব্যক্তিত্বের পূর্ণাঙ্গ রিপোর্ট (${p.code})
+${p.title}
+${p.pop}
+=====================================================
+
+১. সংক্ষিপ্ত বিবরণ:
+${p.desc.join('\n\n')}
+
+২. চারিত্রিক বৈশিষ্ট্যের অনুপাত:
+- অন্তর্মুখী: ${pct.iPct}% | বহির্মুখী: ${pct.ePct}%
+- স্বজ্ঞাত/দূরদর্শী: ${pct.nPct}% | বাস্তবমুখী: ${pct.sPct}%
+- যৌক্তিক বিচার: ${pct.tPct}% | অনুভূতিপ্রবণ: ${pct.fPct}%
+- সুপরিকল্পিত: ${pct.jPct}% | নমনীয়: ${pct.pPct}%
+
+৩. প্রধান শক্তি ও সামর্থ্য:
+${p.strengths.map(s => '• ' + s).join('\n')}
+
+৪. দুর্বলতা ও সতর্কতার দিক:
+${p.weaknesses.map(w => '• ' + w).join('\n')}
+
+৫. সম্পর্ক ও বন্ধুত্ব:
+${p.relationships}
+
+৬. দাম্পত্য জীবন ও পারফেক্ট ম্যাচ:
+সেরা ম্যাচ: ${p.marriage.types}
+কারণ: ${p.marriage.reason}
+
+৭. উপযুক্ত ক্যারিয়ার ও কাজের পরিবেশ:
+পরিবেশ: ${p.career.desc}
+আদর্শ ক্ষেত্র: ${p.career.roles.join(', ')}
+
+৮. আত্মউন্নয়নের বাস্তব পরামর্শ:
+${p.growth.map(g => '• ' + g).join('\n')}
+
+৯. একই ব্যক্তিত্বের বিখ্যাত ব্যক্তিত্ব:
+${p.famous.map(f => `• ${f.name} (${f.role})`).join('\n')}
+
+=====================================================
+রিপোর্ট তৈরি করেছে: পার্সোনালিটি টেস্ট বাংলাদেশ
+`;
+
+      const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Personality_Report_${p.code}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // 2. PDF Download via Print Engine
+    function downloadAsPDF() {
+      toggleDownloadMenu();
+      // Ensure all tabs are visible for print
+      const allTabs = document.querySelectorAll('.tab-content');
+      allTabs.forEach(t => t.classList.remove('hidden'));
+
+      window.print();
+
+      // Restore active tab after print window closes
+      switchTab('strengths');
+    }
+
+    // 3. Photo / Image (.png) Export via html2canvas
+    function downloadAsPhoto() {
+      toggleDownloadMenu();
+      if (!calculatedProfile) return;
+
+      const captureArea = document.getElementById('result-capture-area');
+      // Temporarily reveal all tab contents so the photo contains the entire comprehensive report
+      const allTabs = document.querySelectorAll('.tab-content');
+      allTabs.forEach(t => t.classList.remove('hidden'));
+
+      html2canvas(captureArea, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff"
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `Personality_Result_${calculatedProfile.code}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+
+        // Restore tab layout
+        switchTab('strengths');
+      }).catch(err => {
+        console.error('Photo export error:', err);
+        switchTab('strengths');
+      });
+    }
+
+    // Restart Quiz
+    function restartQuiz() {
+      for (const key in userAnswers) {
+        delete userAnswers[key];
+      }
+      currentPage = 0;
+      calculatedProfile = null;
+      document.getElementById('result-screen').classList.add('hidden');
+      document.getElementById('welcome-screen').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Helper: Number to Bengali Digits
+    function toBengaliNumber(n) {
+      const bn = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+      return n.toString().split('').map(char => bn[char] || char).join('');
+    }
+  </script>
+</body>
+</html>
