@@ -68,20 +68,62 @@
     <!-- ========================================== -->
     <!-- ১. হোম স্ক্রিন (Welcome Screen)             -->
     <!-- ========================================== -->
-    <section id="welcome-screen" class="p-6 sm:p-12 fade-in">
-      <!-- Top Banner Image -->
-      <div class="w-full max-w-md mx-auto mb-8 overflow-hidden rounded-2xl shadow-md border border-slate-100">
-        <img src="16par.png" alt="16 Personalities Banner" class="w-full h-auto object-cover block" />
-      </div>
+   <section id="welcome-screen" class="p-4 sm:p-8 fade-in">
+      
+      <!-- Personality Test Animated Hero Banner -->
+      <div class="custom-hero-banner mb-10" style="position: relative; width: 100%; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #0f172a 100%); border-radius: 24px; overflow: hidden; color: #ffffff; padding: 50px 24px; font-family: 'Hind Siliguri', sans-serif; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.08);">
+        
+        <!-- ব্যাকগ্রাউন্ড এনিমেটেড নিউরন ক্যানভাস -->
+        <canvas id="brainCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.6; z-index: 1;"></canvas>
 
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-snug tracking-tight mb-4">
-          আপনার ভেতরের সত্তাকে আবিষ্কার করুন
-        </h1>
-        <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-          আমরা কীভাবে চিন্তা করি, সিদ্ধান্ত নিই কিংবা মানুষের সাথে মেলামেশা করি—তার মূল চাবিকাঠি লুকিয়ে আছে আমাদের ব্যক্তিত্বের মধ্যে।
-        </p>
-      </div>
+        <!-- কন্টেন্ট এরিয়া -->
+        <div style="position: relative; z-index: 2; max-width: 680px; margin: 0 auto; text-align: center;">
+          
+          <!-- টপ ব্যাজ -->
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(129, 140, 248, 0.3); padding: 6px 18px; border-radius: 50px; font-size: 13px; color: #a5b4fc; margin-bottom: 20px; backdrop-filter: blur(4px);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            ১৬টি ব্যক্তিত্বের ধরন ও মনস্তাত্ত্বিক বিশ্লেষণ
+          </div>
+
+          <!-- মূল শিরোনাম -->
+          <h1 style="font-size: 32px; font-weight: 700; line-height: 1.35; margin: 0 0 18px 0; color: #f8fafc; letter-spacing: -0.5px;">
+            আপনার লুকানো মানসিক ক্ষমতা ও <br>
+            <span style="background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">আসল ব্যক্তিত্বকে আবিষ্কার করুন</span>
+          </h1>
+
+          <!-- বিবরণ -->
+          <p style="font-size: 15px; color: #94a3b8; line-height: 1.7; margin: 0 0 28px 0;">
+            কোনো জটিলতা ছাড়াই সহজ ও সাবলীল বাংলা ভাষায় পরিস্থিতিভিত্তিক টেস্ট দিন। জেনে নিন আপনার শক্তি, সীমাবদ্ধতা, নিখুঁত ক্যারিয়ারের পথ এবং আদর্শ সম্পর্কের মানচিত্র।
+          </p>
+
+          <!-- সিটিএ বাটন (কুইজ শুরু করার ফাংশন যুক্ত) -->
+          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="startQuiz()" style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(90deg, #6366f1 0%, #4f46e5 100%); color: #ffffff; border: none; cursor: pointer; font-size: 16px; font-weight: 600; padding: 14px 32px; border-radius: 12px; box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.5); transition: all 0.3s ease;">
+              বিনামূল্যে টেস্ট শুরু করুন
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+
+          <!-- তথ্য ও সুবিধা (SVG Icons) -->
+          <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 35px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 20px; color: #cbd5e1; font-size: 13px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              <strong style="color: #f8fafc;">১০০% ফ্রি</strong> কুইজ
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              সময় লাগবে <strong style="color: #f8fafc;">~১০ মিনিট</strong>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              কোনো <strong style="color: #f8fafc;">রেজিস্ট্রেশন ছাড়াই</strong> তাৎক্ষণিক ফলাফল
+            </div>
+          </div>
+
+        </div>
+  </div>
 
       <!-- কেন প্রয়োজন কার্ড -->
       <div class="bg-slate-50/70 rounded-2xl p-6 sm:p-8 border border-slate-200/80 mb-8">
@@ -2168,6 +2210,77 @@ ${p.famous.map(f => `• ${f.name} (${f.role})`).join('\n')}
       const bn = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
       return n.toString().split('').map(char => bn[char] || char).join('');
     }
+    // ব্যাকগ্রাউন্ড নিউরন পার্টিকেল এনিমেশন
+    (function() {
+      const canvas = document.getElementById('brainCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      
+      let width, height;
+      let particles = [];
+
+      function resize() {
+        if (!canvas.parentElement) return;
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.6;
+          this.vy = (Math.random() - 0.5) * 0.6;
+          this.radius = Math.random() * 2 + 1;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = '#818cf8';
+          ctx.fill();
+        }
+      }
+
+      const particleCount = Math.min(Math.floor((width || 600) / 15), 45);
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+          
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            if (dist < 110) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(129, 140, 248, ${1 - dist / 110})`;
+              ctx.lineWidth = 0.6;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
   </script>
 </body>
 </html>
