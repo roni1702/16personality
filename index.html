@@ -27,7 +27,15 @@
 <style>
     body {
       font-family: 'Hind Siliguri', sans-serif;
+      /* গ্লাস ইফেক্ট ফুটিয়ে তোলার জন্য ব্যাকগ্রাউন্ডে রঙিন অরগানিক আলোর আভা */
+      background: radial-gradient(circle at 12% 18%, rgba(199, 210, 254, 0.7) 0%, transparent 40%),
+                  radial-gradient(circle at 88% 12%, rgba(253, 222, 232, 0.7) 0%, transparent 35%),
+                  radial-gradient(circle at 50% 80%, rgba(199, 230, 254, 0.7) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 85%, rgba(233, 213, 255, 0.7) 0%, transparent 40%),
+                  #f1f5f9;
+      background-attachment: fixed;
     }
+
     .fade-in {
       animation: fadeIn 0.25s ease-in-out;
     }
@@ -36,8 +44,81 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* PDF Print Stylesheet */
+    /* ============================================================ */
+    /* গ্লাস মরফিজম (Glassmorphism) কোড                              */
+    /* ============================================================ */
+    
+    /* মূল ফ্রেম (Main Glass Container) */
+    .max-w-3xl {
+      background: rgba(255, 255, 255, 0.65) !important;
+      backdrop-filter: blur(24px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+      box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.12),
+                  0 0 0 1px rgba(255, 255, 255, 0.6) inset !important;
+    }
+
+    /* ভেতরের কার্ড ও সেকশনগুলো (Glass Cards) */
+    .bg-slate-50\/70, 
+    .bg-indigo-50\/40, 
+    #questions-container > div, 
+    #result-desc,
+    .tab-content > div > div, 
+    .tab-content > div,
+    #famous-grid > div {
+      background: rgba(255, 255, 255, 0.5) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.8) !important;
+      box-shadow: 0 10px 25px -5px rgba(30, 41, 59, 0.05),
+                  0 0 0 1px rgba(255, 255, 255, 0.4) inset !important;
+    }
+
+    /* প্রশ্নের অপশন বাটনগুলো (Frosted Option Cards) */
+    #questions-container [id^="opt-"] {
+      background: rgba(255, 255, 255, 0.55) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #questions-container [id^="opt-"]:hover {
+      background: rgba(238, 242, 255, 0.75) !important;
+      border-color: rgba(99, 102, 241, 0.6) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -6px rgba(99, 102, 241, 0.15) !important;
+    }
+    #questions-container [id^="opt-"].border-indigo-600 {
+      background: rgba(238, 242, 255, 0.85) !important;
+      border-color: #6366f1 !important;
+      box-shadow: 0 10px 25px -4px rgba(99, 102, 241, 0.25) !important;
+    }
+
+    /* কুইজ পেজের স্টিকি প্রগ্রেস বার */
+    .sticky.top-0 {
+      background: rgba(255, 255, 255, 0.7) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.7) !important;
+    }
+
+    /* ডাউনলোড মেন্যু গ্লাস ড্রপডাউন */
+    #download-dropdown {
+      background: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(25px) !important;
+      -webkit-backdrop-filter: blur(25px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.9) !important;
+      box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.2) !important;
+    }
+
+    /* ============================================================ */
+    /* PDF Print Stylesheet (পিডিএফ ডাউনলোডের স্থায়িত্ব বজায় রাখতে) */
+    /* ============================================================ */
     @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
       html, body {
         background: #ffffff !important;
         color: #000000 !important;
@@ -52,12 +133,14 @@
       main, .w-full.max-w-3xl, #result-screen, #result-capture-area {
         max-width: 100% !important;
         width: 100% !important;
+        background: #ffffff !important;
         box-shadow: none !important;
         border: none !important;
         padding: 0 !important;
         margin: 0 !important;
         overflow: visible !important;
         display: block !important;
+        backdrop-filter: none !important;
       }
       #result-screen .tab-content,
       #result-screen .tab-content.hidden {
@@ -84,8 +167,7 @@
 </style>
         
 </head>
-<body class="bg-slate-50 min-h-screen text-slate-800 antialiased px-3 py-8 sm:px-6 sm:py-14 flex justify-center items-start">
-
+<body class="min-h-screen text-slate-800 antialiased px-3 py-8 sm:px-6 sm:py-14 flex justify-center items-start">
   <div class="w-full max-w-3xl bg-white shadow-xl shadow-slate-200/60 rounded-3xl border border-slate-100 overflow-hidden my-4">
 
     <!-- ========================================== -->
